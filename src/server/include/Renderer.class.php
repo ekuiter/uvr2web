@@ -143,9 +143,7 @@ class Renderer {
    * Gets an additional meta navigation
    */
   private function get_meta_nav() {
-    //$style = self::$nav == '' ? ' class="visible-desktop"' : ' class="visible-desktop" style="margin-left:20px;padding-left:20px;border-left:1px solid #555"';
-    $this->add_link_extern(Loc::t('about'), 'http://dev.elias-kuiter.de/uvr2web/'/*, $style*/);
-    //$this->add_link_extern(Loc::t('about'), 'http://dev.elias-kuiter.de/uvr2web/', ' class="hidden-desktop"');
+    $this->add_link_extern(Loc::t('about'), 'http://ekuiter.github.io/uvr2web');
     $this->add_link_extern(Loc::t('docs'), 'http://uvr2web.elias-kuiter.de/docs/');
   }
 
