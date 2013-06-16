@@ -8,14 +8,14 @@ Es kann Temperaturdaten visualisieren, diese auf deinem PC oder Smartphone darst
 uvr2web funktioniert nur mit der UVR1611, Unterstützung für andere Regelungen ist nicht geplant.
 Das Programm besteht aus zwei Teilen:
 
-Arduino-Sketch
---------------
+**Arduino-Sketch**
+
 Der Arduino-Sketch kommuniziert mit der UVR1611. Dafür brauchst du natürlich ein Arduino-Board (getestet auf dem Leonardo).
 Außerdem musst du ein einfaches Arduino-Shield löten (Spannungsteiler).
 Die UVR1611 gibt ihre Daten mittels eines Manchester-Codes aus. Der Sketch dekodiert dieses Signal und schickt die Daten dann entweder an einen PC über eine serielle Verbindung oder über Ethernet an die uvr2web PHP-App.
 
-PHP app
--------
+**PHP-App**
+
 Die PHP-App benötigt eine MySQL-Datenbank und die GD-Library. Sie empfängt die Daten vom Arduino-Board und speichert sie in der Datenbank. Danach hast du einige Möglichkeiten: Graphen anzeigen, Daten herunterladen, eine Live-Übersicht abrufen, und das alles mit einer schnellen, modernen Bedienung (durch Twitter Bootstrap) - außerdem noch eine Benutzerverwaltung, E-Mail-Versand und mehrere Sprachen. Eine genaue Feature-Liste gibt es auf meinem [Blog](http://blog.elias-kuiter.de).
 
 Erste Schritte
@@ -46,14 +46,14 @@ It can visualize temperature data on your PC or smartphone and much more.
 uvr2web works only with the UVR1611, support for other heating controls is not planned.
 The program consists of two parts:
 
-Arduino sketch
---------------
+**Arduino sketch**
+
 The Arduino sketch communicates with the UVR1611. Obviously, you need an Arduino board for that (tested on Leonardo).
 Additionally, you have to solder a little Arduino shield (voltage divider).
 The UVR1611 outputs its data with a manchester code. The sketch decodes this signal and then sends the data to either a PC via a serial connection or the uvr2web PHP app via Ethernet.
 
-PHP app
--------
+**PHP app**
+
 The PHP app needs a MySQL database and the GD library. It receives the data from the Arduino board and saves it in the database. You then have a number of options: Display charts, download data, fetch a live overview, and all that with a fast and modern interface (built with Twitter Bootstrap) - topped off with user management, emailing and various languages. A detailed feature list is on my [blog](http://blog.elias-kuiter.de).
 
 Getting started
