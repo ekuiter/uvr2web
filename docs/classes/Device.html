@@ -1,0 +1,425 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » \Device</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/AdminPages.html"><i class="icon-folder-open"></i> AdminPages</a></li>
+<li><a href="../packages/Config.html"><i class="icon-folder-open"></i> Config</a></li>
+<li><a href="../packages/DataFrame.html"><i class="icon-folder-open"></i> DataFrame</a></li>
+<li><a href="../packages/Database.html"><i class="icon-folder-open"></i> Database</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/Devices.html"><i class="icon-folder-open"></i> Devices</a></li>
+<li><a href="../packages/Highcharts.html"><i class="icon-folder-open"></i> Highcharts</a></li>
+<li><a href="../packages/Localization.html"><i class="icon-folder-open"></i> Localization</a></li>
+<li><a href="../packages/Notifications.html"><i class="icon-folder-open"></i> Notifications</a></li>
+<li><a href="../packages/Pages.html"><i class="icon-folder-open"></i> Pages</a></li>
+<li><a href="../packages/Renderers.html"><i class="icon-folder-open"></i> Renderers</a></li>
+<li><a href="../packages/Uploader.html"><i class="icon-folder-open"></i> Uploader</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">57</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">2</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method___construct" title="__construct :: Create a new device"><span class="description">Create a new device</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_chart" title="chart :: Displays a Highchart"><span class="description">Displays a Highchart</span><pre>chart()</pre></a></li>
+<li class="method public "><a href="#method_fetch_by" title="fetch_by :: Fetch device data by data frame"><span class="description">Fetch device data by data frame</span><pre>fetch_by()</pre></a></li>
+<li class="method public "><a href="#method_get_alias" title="get_alias :: Gets the device's alias"><span class="description">Gets the device's alias</span><pre>get_alias()</pre></a></li>
+<li class="method public "><a href="#method_get_enabled" title="get_enabled :: "><span class="description">get_enabled()
+        </span><pre>get_enabled()</pre></a></li>
+<li class="method public "><a href="#method_image" title="image :: Generates a mini graph"><span class="description">Generates a mini graph</span><pre>image()</pre></a></li>
+<li class="method public "><a href="#method_json" title="json :: Returns the current device data as JSON"><span class="description">Returns the current device data as JSON</span><pre>json()</pre></a></li>
+<li class="method public "><a href="#method_maximal_number" title="maximal_number :: "><span class="description">maximal_number()
+        </span><pre>maximal_number()</pre></a></li>
+<li class="method public "><a href="#method_render_box" title="render_box :: Renders device as a preview box (mini graph)"><span class="description">Renders device as a preview box (mini graph)</span><pre>render_box()</pre></a></li>
+<li class="method public "><a href="#method_render_page" title="render_page :: Renders a single device"><span class="description">Renders a single device</span><pre>render_page()</pre></a></li>
+<li class="method public "><a href="#method_set_alias" title="set_alias :: Sets the device's alias"><span class="description">Sets the device's alias</span><pre>set_alias()</pre></a></li>
+<li class="method public "><a href="#method_set_enabled" title="set_enabled :: Saves the enabled flag"><span class="description">Saves the enabled flag</span><pre>set_enabled()</pre></a></li>
+<li class="method public "><a href="#method_set_order_by" title="set_order_by :: Sets the device order"><span class="description">Sets the device order</span><pre>set_order_by()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="method protected "><a href="#method_check_no" title="check_no :: Checks the device number's correctness"><span class="description">Checks the device number's correctness</span><pre>check_no()</pre></a></li>
+<li class="method protected "><a href="#method_extreme_values" title="extreme_values :: Fetches maximum and minimum values"><span class="description">Fetches maximum and minimum values</span><pre>extreme_values()</pre></a></li>
+<li class="method protected "><a href="#method_get_by" title="get_by :: Get devices by class and order"><span class="description">Get devices by class and order</span><pre>get_by()</pre></a></li>
+<li class="method protected "><a href="#method_get_order_by" title="get_order_by :: Gets the device order"><span class="description">Gets the device order</span><pre>get_order_by()</pre></a></li>
+<li class="method protected "><a href="#method_get_separator" title="get_separator :: Returns a possible parent separator"><span class="description">Returns a possible parent separator</span><pre>get_separator()</pre></a></li>
+<li class="method protected "><a href="#method_image_data" title="image_data :: Prepares a mini graph"><span class="description">Prepares a mini graph</span><pre>image_data()</pre></a></li>
+<li class="method protected "><a href="#method_page_title" title="page_title :: Renders the page title"><span class="description">Renders the page title</span><pre>page_title()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul><li class="method private "><a href="#method_fetch_data" title="fetch_data :: Fetches all device data from the database"><span class="description">Fetches all device data from the database</span><pre>fetch_data()</pre></a></li></ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul>
+<li class="property public "><a href="#property_info" title="$info :: Temporary device info"><span class="description"></span><pre>$info</pre></a></li>
+<li class="property public "><a href="#property_no" title="$no :: Specific number for each device"><span class="description"></span><pre>$no</pre></a></li>
+</ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="property protected "><a href="#property_enabled" title="$enabled :: Whether the device is enabled"><span class="description"></span><pre>$enabled</pre></a></li>
+<li class="property protected "><a href="#property_human_type" title="$human_type :: Readable device type"><span class="description"></span><pre>$human_type</pre></a></li>
+<li class="property protected "><a href="#property_human_type_plural" title="$human_type_plural :: Readable device type (plural)"><span class="description"></span><pre>$human_type_plural</pre></a></li>
+<li class="property protected "><a href="#property_type" title="$type :: Device type"><span class="description"></span><pre>$type</pre></a></li>
+<li class="property protected "><a href="#property_type_plural" title="$type_plural :: Device type (plural)"><span class="description"></span><pre>$type_plural</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\Device"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/Device.html">Device</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">Core class for all device types</p>
+<div class="details">
+<div class="long_description"><p>Abstract parent class for all device types. Provides functions for dataframe and database handling, rendering, aliases, order etc.
+Applies on the classes Sensor, Output, HeatMeter and SpeedStep.</p></div>
+<table class="table table-bordered"><tr>
+<th>package</th>
+<td><a href="../packages/Devices.html">Devices</a></td>
+</tr></table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>Create a new device</h2>
+<pre>__construct(mixed $no) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$no</h4>
+<code>mixed</code>
+</div>
+</div></div>
+</div>
+<a id="method_chart"></a><div class="element clickable method public method_chart" data-toggle="collapse" data-target=".method_chart .collapse">
+<h2>Displays a Highchart</h2>
+<pre>chart() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>Uses AJAX to auto-update the chart.</p></div></div></div>
+</div>
+<a id="method_fetch_by"></a><div class="element clickable method public method_fetch_by" data-toggle="collapse" data-target=".method_fetch_by .collapse">
+<h2>Fetch device data by data frame</h2>
+<pre>fetch_by(array $data_frame) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$data_frame</h4>
+<code>array</code>
+</div>
+</div></div>
+</div>
+<a id="method_get_alias"></a><div class="element clickable method public method_get_alias" data-toggle="collapse" data-target=".method_get_alias .collapse">
+<h2>Gets the device's alias</h2>
+<pre>get_alias(bool $real) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$real</h4>
+<code>bool</code>
+</div>
+</div></div>
+</div>
+<a id="method_get_enabled"></a><div class="element clickable method public method_get_enabled" data-toggle="collapse" data-target=".method_get_enabled .collapse">
+<h2>get_enabled()
+        </h2>
+<pre>get_enabled() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_image"></a><div class="element clickable method public method_image" data-toggle="collapse" data-target=".method_image .collapse">
+<h2>Generates a mini graph</h2>
+<pre>image(int $size) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>GD library needed.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$size</h4>
+<code>int</code>
+</div>
+</div></div>
+</div>
+<a id="method_json"></a><div class="element clickable method public method_json" data-toggle="collapse" data-target=".method_json .collapse">
+<h2>Returns the current device data as JSON</h2>
+<pre>json() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_maximal_number"></a><div class="element clickable method public method_maximal_number" data-toggle="collapse" data-target=".method_maximal_number .collapse">
+<h2>maximal_number()
+        </h2>
+<pre>maximal_number() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_render_box"></a><div class="element clickable method public method_render_box" data-toggle="collapse" data-target=".method_render_box .collapse">
+<h2>Renders device as a preview box (mini graph)</h2>
+<pre>render_box() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_render_page"></a><div class="element clickable method public method_render_page" data-toggle="collapse" data-target=".method_render_page .collapse">
+<h2>Renders a single device</h2>
+<pre>render_page() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_set_alias"></a><div class="element clickable method public method_set_alias" data-toggle="collapse" data-target=".method_set_alias .collapse">
+<h2>Sets the device's alias</h2>
+<pre>set_alias(string $alias) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$alias</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a id="method_set_enabled"></a><div class="element clickable method public method_set_enabled" data-toggle="collapse" data-target=".method_set_enabled .collapse">
+<h2>Saves the enabled flag</h2>
+<pre>set_enabled($enabled) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$enabled</h4></div>
+</div></div>
+</div>
+<a id="method_set_order_by"></a><div class="element clickable method public method_set_order_by" data-toggle="collapse" data-target=".method_set_order_by .collapse">
+<h2>Sets the device order</h2>
+<pre>set_order_by(string $type, array $order) </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$type</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$order</h4>
+<code>array</code>
+</div>
+</div></div>
+</div>
+<a id="method_check_no"></a><div class="element clickable method protected method_check_no" data-toggle="collapse" data-target=".method_check_no .collapse">
+<h2>Checks the device number's correctness</h2>
+<pre>check_no(int $no) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$no</h4>
+<code>int</code>
+</div>
+</div></div>
+</div>
+<a id="method_extreme_values"></a><div class="element clickable method protected method_extreme_values" data-toggle="collapse" data-target=".method_extreme_values .collapse">
+<h2>Fetches maximum and minimum values</h2>
+<pre>extreme_values(string $unit) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$unit</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a id="method_get_by"></a><div class="element clickable method protected method_get_by" data-toggle="collapse" data-target=".method_get_by .collapse">
+<h2>Get devices by class and order</h2>
+<pre>get_by(string $class, array $order) </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Useful for iterating.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$class</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$order</h4>
+<code>array</code>
+</div>
+</div></div>
+</div>
+<a id="method_get_order_by"></a><div class="element clickable method protected method_get_order_by" data-toggle="collapse" data-target=".method_get_order_by .collapse">
+<h2>Gets the device order</h2>
+<pre>get_order_by(string $type, array $default_order) </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$type</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$default_order</h4>
+<code>array</code>
+</div>
+</div></div>
+</div>
+<a id="method_get_separator"></a><div class="element clickable method protected method_get_separator" data-toggle="collapse" data-target=".method_get_separator .collapse">
+<h2>Returns a possible parent separator</h2>
+<pre>get_separator() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_image_data"></a><div class="element clickable method protected method_image_data" data-toggle="collapse" data-target=".method_image_data .collapse">
+<h2>Prepares a mini graph</h2>
+<pre>image_data(array $data, int $x, int $y) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>array</code>
+</div>
+<div class="subelement argument">
+<h4>$x</h4>
+<code>int</code>
+</div>
+<div class="subelement argument">
+<h4>$y</h4>
+<code>int</code>
+</div>
+</div></div>
+</div>
+<a id="method_page_title"></a><div class="element clickable method protected method_page_title" data-toggle="collapse" data-target=".method_page_title .collapse">
+<h2>Renders the page title</h2>
+<pre>page_title() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_fetch_data"></a><div class="element clickable method private method_fetch_data" data-toggle="collapse" data-target=".method_fetch_data .collapse">
+<h2>Fetches all device data from the database</h2>
+<pre>fetch_data() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_info"> </a><div class="element clickable property public property_info" data-toggle="collapse" data-target=".property_info .collapse">
+<h2></h2>
+<pre>$info </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_no"> </a><div class="element clickable property public property_no" data-toggle="collapse" data-target=".property_no .collapse">
+<h2></h2>
+<pre>$no </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_enabled"> </a><div class="element clickable property protected property_enabled" data-toggle="collapse" data-target=".property_enabled .collapse">
+<h2></h2>
+<pre>$enabled </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_human_type"> </a><div class="element clickable property protected property_human_type" data-toggle="collapse" data-target=".property_human_type .collapse">
+<h2></h2>
+<pre>$human_type </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_human_type_plural"> </a><div class="element clickable property protected property_human_type_plural" data-toggle="collapse" data-target=".property_human_type_plural .collapse">
+<h2></h2>
+<pre>$human_type_plural </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_type"> </a><div class="element clickable property protected property_type" data-toggle="collapse" data-target=".property_type .collapse">
+<h2></h2>
+<pre>$type </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_type_plural"> </a><div class="element clickable property protected property_type_plural" data-toggle="collapse" data-target=".property_type_plural .collapse">
+<h2></h2>
+<pre>$type_plural </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
+            generated on 2013-06-16T20:48:45+02:00.<br></footer></div>
+</div>
+</body>
+</html>

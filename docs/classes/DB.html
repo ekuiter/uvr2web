@@ -1,0 +1,307 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » \DB</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/AdminPages.html"><i class="icon-folder-open"></i> AdminPages</a></li>
+<li><a href="../packages/Config.html"><i class="icon-folder-open"></i> Config</a></li>
+<li><a href="../packages/DataFrame.html"><i class="icon-folder-open"></i> DataFrame</a></li>
+<li><a href="../packages/Database.html"><i class="icon-folder-open"></i> Database</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/Devices.html"><i class="icon-folder-open"></i> Devices</a></li>
+<li><a href="../packages/Highcharts.html"><i class="icon-folder-open"></i> Highcharts</a></li>
+<li><a href="../packages/Localization.html"><i class="icon-folder-open"></i> Localization</a></li>
+<li><a href="../packages/Notifications.html"><i class="icon-folder-open"></i> Notifications</a></li>
+<li><a href="../packages/Pages.html"><i class="icon-folder-open"></i> Pages</a></li>
+<li><a href="../packages/Renderers.html"><i class="icon-folder-open"></i> Renderers</a></li>
+<li><a href="../packages/Uploader.html"><i class="icon-folder-open"></i> Uploader</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">57</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">2</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method_connect" title="connect :: Connects to the database"><span class="description">Connects to the database</span><pre>connect()</pre></a></li>
+<li class="method public "><a href="#method_escape" title="escape :: Escapes a string"><span class="description">Escapes a string</span><pre>escape()</pre></a></li>
+<li class="method public "><a href="#method_get_rows" title="get_rows :: Fetches affected rows"><span class="description">Fetches affected rows</span><pre>get_rows()</pre></a></li>
+<li class="method public "><a href="#method_isConnected" title="isConnected :: Checks if the database is connected"><span class="description">Checks if the database is connected</span><pre>isConnected()</pre></a></li>
+<li class="method public "><a href="#method_multi_query" title="multi_query :: Multi queries the database with SQL"><span class="description">Multi queries the database with SQL</span><pre>multi_query()</pre></a></li>
+<li class="method public "><a href="#method_query" title="query :: Queries the database with SQL"><span class="description">Queries the database with SQL</span><pre>query()</pre></a></li>
+<li class="method public "><a href="#method_start" title="start :: Initializes the database"><span class="description">Initializes the database</span><pre>start()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul>
+<li class="method private "><a href="#method_multi_query_mysqli" title="multi_query_mysqli :: Multi ueries a MySQL database"><span class="description">Multi ueries a MySQL database</span><pre>multi_query_mysqli()</pre></a></li>
+<li class="method private "><a href="#method_query_mysqli" title="query_mysqli :: Queries a MySQL database"><span class="description">Queries a MySQL database</span><pre>query_mysqli()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul>
+<li class="property private "><a href="#property_charset" title="$charset :: Database charset"><span class="description"></span><pre>$charset</pre></a></li>
+<li class="property private "><a href="#property_db" title="$db :: Database handle"><span class="description"></span><pre>$db</pre></a></li>
+<li class="property private "><a href="#property_dbname" title="$dbname :: Database name"><span class="description"></span><pre>$dbname</pre></a></li>
+<li class="property private "><a href="#property_pass" title="$pass :: Password"><span class="description"></span><pre>$pass</pre></a></li>
+<li class="property private "><a href="#property_rows" title="$rows :: Affected rows"><span class="description"></span><pre>$rows</pre></a></li>
+<li class="property private "><a href="#property_server" title="$server :: Database server"><span class="description"></span><pre>$server</pre></a></li>
+<li class="property private "><a href="#property_type" title="$type :: Database type"><span class="description"></span><pre>$type</pre></a></li>
+<li class="property private "><a href="#property_user" title="$user :: User name"><span class="description"></span><pre>$user</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\DB"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/DB.html">DB</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">Database</p>
+<div class="details">
+<div class="long_description"><p>Manages the database connection and querying.</p></div>
+<table class="table table-bordered"><tr>
+<th>package</th>
+<td><a href="../packages/Database.html">Database</a></td>
+</tr></table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_connect"></a><div class="element clickable method public method_connect" data-toggle="collapse" data-target=".method_connect .collapse">
+<h2>Connects to the database</h2>
+<pre>connect() </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_escape"></a><div class="element clickable method public method_escape" data-toggle="collapse" data-target=".method_escape .collapse">
+<h2>Escapes a string</h2>
+<pre>escape(string $string) </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$string</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a id="method_get_rows"></a><div class="element clickable method public method_get_rows" data-toggle="collapse" data-target=".method_get_rows .collapse">
+<h2>Fetches affected rows</h2>
+<pre>get_rows() </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_isConnected"></a><div class="element clickable method public method_isConnected" data-toggle="collapse" data-target=".method_isConnected .collapse">
+<h2>Checks if the database is connected</h2>
+<pre>isConnected() </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_multi_query"></a><div class="element clickable method public method_multi_query" data-toggle="collapse" data-target=".method_multi_query .collapse">
+<h2>Multi queries the database with SQL</h2>
+<pre>multi_query(string $sql) </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$sql</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a id="method_query"></a><div class="element clickable method public method_query" data-toggle="collapse" data-target=".method_query .collapse">
+<h2>Queries the database with SQL</h2>
+<pre>query(string $sql) </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$sql</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a id="method_start"></a><div class="element clickable method public method_start" data-toggle="collapse" data-target=".method_start .collapse">
+<h2>Initializes the database</h2>
+<pre>start(string $server, string $user, string $pass, string $dbname, string $type, string $charset) </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$server</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$user</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$pass</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$dbname</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$type</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$charset</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a id="method_multi_query_mysqli"></a><div class="element clickable method private method_multi_query_mysqli" data-toggle="collapse" data-target=".method_multi_query_mysqli .collapse">
+<h2>Multi ueries a MySQL database</h2>
+<pre>multi_query_mysqli(string $sql) </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$sql</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a id="method_query_mysqli"></a><div class="element clickable method private method_query_mysqli" data-toggle="collapse" data-target=".method_query_mysqli .collapse">
+<h2>Queries a MySQL database</h2>
+<pre>query_mysqli(string $sql) </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$sql</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_charset"> </a><div class="element clickable property private property_charset" data-toggle="collapse" data-target=".property_charset .collapse">
+<h2></h2>
+<pre>$charset </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_db"> </a><div class="element clickable property private property_db" data-toggle="collapse" data-target=".property_db .collapse">
+<h2></h2>
+<pre>$db </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_dbname"> </a><div class="element clickable property private property_dbname" data-toggle="collapse" data-target=".property_dbname .collapse">
+<h2></h2>
+<pre>$dbname </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_pass"> </a><div class="element clickable property private property_pass" data-toggle="collapse" data-target=".property_pass .collapse">
+<h2></h2>
+<pre>$pass </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_rows"> </a><div class="element clickable property private property_rows" data-toggle="collapse" data-target=".property_rows .collapse">
+<h2></h2>
+<pre>$rows </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_server"> </a><div class="element clickable property private property_server" data-toggle="collapse" data-target=".property_server .collapse">
+<h2></h2>
+<pre>$server </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_type"> </a><div class="element clickable property private property_type" data-toggle="collapse" data-target=".property_type .collapse">
+<h2></h2>
+<pre>$type </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>todo</th>
+<td>Only MySQL for now</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property_user"> </a><div class="element clickable property private property_user" data-toggle="collapse" data-target=".property_user .collapse">
+<h2></h2>
+<pre>$user </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
+            generated on 2013-06-16T20:48:46+02:00.<br></footer></div>
+</div>
+</body>
+</html>

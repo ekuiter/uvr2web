@@ -1,0 +1,1 @@
+wc -l $(find ../src/arduino/uvr2web_english -name '*.h' -o -name '*.ino')
