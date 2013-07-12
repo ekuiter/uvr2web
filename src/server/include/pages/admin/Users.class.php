@@ -124,7 +124,7 @@ code;
         else
           $this->add_error(Loc::t('passwords dont match'));
       }
-      DB::query("UPDATE hcp_users SET username='$username'$password, role='$role' WHERE id=$user");
+      DB::query("UPDATE uvr2web_users SET username='$username'$password, role='$role' WHERE id=$user");
       if (DB::get_rows() > 0)
         $this->add_success(Loc::t('edit 1') . "<em>$username</em>" . Loc::t('edit 2'));
     }
