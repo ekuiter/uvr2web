@@ -6,6 +6,7 @@
  
  dump.h:
  Ausgabe der Daten auf der seriellen Schnittstelle
+ Data output via serial interface
  
  */
 
@@ -13,10 +14,10 @@
 
 namespace Dump {
   
-  boolean active; // Dump aktivieren?
+  boolean active; // Dump aktivieren? // dump active?
 
-  void start(); // Ausgabe aller Daten
-  void meta(); // Metadaten (Regelung + Zeitstempel)
+  void start(); // Ausgabe aller Daten // output all data
+  void meta(); // Metadaten (Regelung + Zeitstempel) // meta data (heating control + timestamp)
   void bytes();
   void bits();
 
@@ -26,6 +27,7 @@ namespace Dump {
   void speed_steps(); // Drehzahlstufen
 
   // Ausgabe einzelner Elemente
+  // output of particular elements
   void heat_meter();
   void sensor();
   void speed_step(int output);
@@ -33,6 +35,3 @@ namespace Dump {
 }
 
 #endif
-
-
-

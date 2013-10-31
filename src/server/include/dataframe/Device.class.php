@@ -210,12 +210,11 @@ code;
   */
   public function chart() {
     $this->fetch_data();
-    $timeout = 3000 + $GLOBALS['upload_interval'];
+    $timeout = $GLOBALS['upload_interval'];
     echo "<div id=\"$this->type$this->no\"></div>";
     $chart = new Highchart(Highchart::HIGHSTOCK);
     $chart->chart->renderTo = "$this->type$this->no";
     $chart->chart->type = 'areaspline';
-    $timeout = 3000 + $GLOBALS['upload_interval'];
     $expr = <<<code
     function live$this->type$this->no() {
       $("#loading").css('visibility', 'visible');

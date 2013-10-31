@@ -6,6 +6,7 @@
  
  web.ino:
  Hochladen der Datenrahmen ins Internet via Ethernet
+ Upload data frames to the internet via Ethernet
  
  */
 
@@ -14,15 +15,16 @@
 namespace Web {
 
   void start() {
-    Serial.println("Initialisiere ...");
+    Serial.println("Initialising ...");
     if (Ethernet.begin(mac) == 0) {
-      Serial.println("DHCP fehlgeschlagen. Programmabbruch.");
+      Serial.println("DHCP failed. Program abort.");
       Receive::stop();
       while(1);
     }
   }
 
   void upload() {
+    while(millis() - upload_finished < upload_interval);
     if (client.connect(server, 80)) {
       Serial.println("\nUpload ...");
       request = "GET ";
@@ -40,18 +42,17 @@ namespace Web {
       client.println(request);
       client.println();
       while (working());
-      delay(upload_interval);
+      upload_finished = millis();
     } 
     else
-      Serial.println("Server-Verbindung fehlgeschlagen.");
+      Serial.println("Server connection failed.");
   }
 
   boolean working() {
     while (client.available())
       client.read();
-    //Serial.print((char)client.read());
     if (!client.connected()) {
-      Serial.println("Upload beendet.");
+      Serial.println("Upload finished.");
       client.stop();
       return false;
     }
@@ -149,20 +150,3 @@ namespace Web {
 }
 
 #endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

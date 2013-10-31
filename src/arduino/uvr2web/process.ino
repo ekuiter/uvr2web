@@ -6,6 +6,7 @@
  
  process.ino:
  Verarbeitung der gespeicherten Datenrahmen
+ Processing of saved data frames
  
  */
 
@@ -13,77 +14,88 @@ namespace Process {
 
   void start() {
     // bereite Datenrahmen vor
+    // prepare data frame
     if (prepare()) {
       // entweder Dump auf Serial oder Upload
+      // either dump via serial or web upload
 #ifdef DEBUG
       if (Dump::active)
         Dump::start();
 #else
       Web::upload();
 #endif
-    } 
-    else
-      Serial.println("Datenrahmen beschaedigt.");
+    } else
+      Serial.print("Data frame damaged.");
   }
 
   boolean prepare() {
-    start_bit = analyze(); // Anfang des Datenrahmens finden
-    // invertiertes Signal?
+    start_bit = analyze(); // Anfang des Datenrahmens finden // find the data frame's beginning
+    // invertiertes Signal? // inverted signal?
     if (start_bit == -1) {
-      invert(); // erneut invertieren
+      invert(); // erneut invertieren // invert again
       start_bit = analyze();
     }
-    compress(); // Bits in eine Bitmap verschieben
+    trim(); // Start- und Stopbits entfernen // remove start and stop bits
     return check_device(); // nur für die UVR1611
   } 
 
   int analyze() {
     byte sync;
-    // finde SYNC (16 * aufeinanderfolgend 1)
-    for (int i = 0; i < bytes_count; i++) {
-      if (data_bytes[i])
+    // finde SYNC (16 * aufeinanderfolgend 1) // find SYNC (16 * sequential 1)
+    for (int i = 0; i < bit_number; i++) {
+      if (read_bit(i))
         sync++;
       else
         sync = 0;
       if (sync == 16) {
-        // finde erste 0
-        while (data_bytes[i] == 1)
+        // finde erste 0 // find first 0
+        while (read_bit(i) == 1)
           i++;
-        return i; // Anfang des Datenrahmens
+        return i; // Anfang des Datenrahmens // beginning of data frame
       }
     }
-    return -1; // kein Datenrahmen vorhanden. Signal überprüfen?
+    // kein Datenrahmen vorhanden. Signal überprüfen?
+    return -1; // no data frame available. check signal?
   }
 
   void invert() {
-    for (int i = 0; i < bytes_count; i++)
-      data_bytes[i] = !data_bytes[i]; // jedes Bit umkehren
+    for (int i = 0; i < read_bit(i); i++)
+      write_bit(i, read_bit(i) ? 0 : 1); // jedes Bit umkehren // invert every bit
   }
 
+  byte read_bit(int pos) {
+    int row = pos / 8; // Position in Bitmap ermitteln // detect position in bitmap
+    int col = pos % 8;
+    return (((data_bits[row]) >> (col)) & 0x01); // Bit zurückgeben // return bit
+  }
+  
   void write_bit(int pos, byte set) {
-    int row = pos / 8; // Position in Bitmap ermitteln
+    int row = pos / 8; // Position in Bitmap ermitteln // detect position in bitmap
     int col = pos % 8;
     if (set)
-      data_bits[row] |= 1 << col; // Bit setzen
+      data_bits[row] |= 1 << col; // Bit setzen // set bit
     else
-      data_bits[row] &= ~(1 << col); // Bit löschen
+      data_bits[row] &= ~(1 << col); // Bit löschen // clear bit
   }
 
-  void compress() {    
-    for (int i = start_bit, bit = 0; i < bytes_count; i++) {
+  void trim() {    
+    for (int i = start_bit, bit = 0; i < bit_number; i++) {
       int offset = i - start_bit;
       // Start- und Stop-Bits ignorieren:
       // Startbits: 0 10 20 30, also  x    % 10 == 0
       // Stopbits:  9 19 29 39, also (x+1) % 10 == 0
+      // ignore start and stop bits:
+      // start bits: 0 10 20 30, also  x    % 10 == 0
+      // stop bits:  9 19 29 39, also (x+1) % 10 == 0
       if (offset % 10 && (offset + 1) % 10) {
-        write_bit(bit, data_bytes[i]);
+        write_bit(bit, read_bit(i));
         bit++;
       }
     }
   }
 
   boolean check_device() {
-    // Datenrahmen von einer UVR1611?
+    // Datenrahmen von einer UVR1611? // data frame of UVR1611?
     if (data_bits[0] == 0x80 && data_bits[1] == 0x7f)
       return true;
     else
@@ -104,14 +116,15 @@ namespace Process {
     sensor.invalid = false;
     sensor.mode = -1;
     float value;
-    number = 6 + number * 2; // Sensor 1 liegt auf Byte 8 und 9
+    number = 6 + number * 2; // Sensor 1 liegt auf Byte 8 und 9 // sensor 1 lies on byte 8 and 9
     byte sensor_low = data_bits[number];
     byte sensor_high = data_bits[number + 1];
     number = sensor_high << 8 | sensor_low;
     sensor.type = (number & 0x7000) >> 12;
-    if (!(number & 0x8000)) { // Vorzeichen positiv
+    if (!(number & 0x8000)) { // Vorzeichen positiv // sign positive
       number &= 0xfff;
       // Berechnungen für unterschiedliche Sensortypen
+      // calculations for different sensor types
       switch (sensor.type) {
       case DIGITAL:
         value = false;
@@ -133,9 +146,10 @@ namespace Process {
         sensor.invalid = true;
       }
     } 
-    else { // Vorzeichen negativ
+    else { // Vorzeichen negativ // sign negative
       number |= 0xf000;
       // Berechnungen für unterschiedliche Sensortypen
+      // calculations for different sensor types
       switch (sensor.type) {
       case DIGITAL:
         value = true;
@@ -163,7 +177,7 @@ namespace Process {
   void fetch_heat_meter(int number) {
     heat_meter.number = number;
     heat_meter.invalid = false;
-    // Momentanleistung
+    // Momentanleistung // current power
     int power_index, kwh_index, mwh_index = 0;
     if (number == 1) {
       if (!!(data_bits[46] & 0x1)) {
@@ -190,9 +204,9 @@ namespace Process {
     int high = 65536 * b4 + 256 * b3 + b2;
     int low = (b1 * 10) / 256;
     float current_power;
-    if (!(b4 & 0x80)) // Vorzeichen positiv
+    if (!(b4 & 0x80)) // Vorzeichen positiv // sign positive
       current_power = (10 * high + low) / 100;
-    else // Vorzeichen negativ
+    else // Vorzeichen negativ // sign negative
     current_power = (10 * (high - 65536) - low) / 100;
     heat_meter.current_power = current_power;
     // kWh
@@ -212,7 +226,7 @@ namespace Process {
 
   int fetch_speed_step(int output) {
     byte index;
-    // nur für die Ausgänge 1, 2, 6 und 7
+    // nur für die Ausgänge 1, 2, 6 und 7 // only for outputs 1, 2, 6 and 7
     switch (output) {
     case 1:
       index = 42;
@@ -235,10 +249,3 @@ namespace Process {
   }
 
 }
-
-
-
-
-
-
-

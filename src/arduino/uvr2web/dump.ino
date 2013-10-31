@@ -5,6 +5,7 @@
  © Elias Kuiter 2013 (http://elias-kuiter.de)
  
  dump.ino:
+ Ausgabe der Daten auf der seriellen Schnittstelle
  Data output via serial interface
  
  */
@@ -45,20 +46,6 @@ namespace Dump {
       Serial.println(" (DST)");
     else
       Serial.println(" (not DST)");
-  }
-
-  void bytes() {
-    for (int i = 0; i < Process::bytes_count; i++)
-      Serial.print(Process::data_bytes[i], BIN); 
-    Serial.println();
-  }
-
-  void bits() {
-    for (int i = 0; i < 64; i++) { // output 64 data bytes
-      Serial.print(Process::data_bits[i], BIN); 
-      Serial.print(" "); 
-    }
-    Serial.println();
   }
 
   void sensors() {
@@ -174,7 +161,3 @@ namespace Dump {
 }
 
 #endif
-
-
-
-

@@ -71,7 +71,7 @@ code;
   /*
    * Displays install formular
    */
-  private function form($server = 'localhost', $username = '', $database = '', $upload_password = '', $upload_interval = '7000', $data_record_interval = '90') {
+  private function form($server = 'localhost', $username = '', $database = '', $upload_password = '', $upload_interval = '10000', $data_record_interval = '90') {
     $upload_password = $upload_password ? $upload_password : $this->generate_password(24);
     echo <<<code
     <p style="margin:20px 0;font-size:14px">To install uvr2web, you need to fill out these fields.</p>
@@ -114,7 +114,7 @@ code;
     <tr>
       <td><label for="upload_interval">Upload interval</label></td>
       <td><input type="text" size="40" name="upload_interval" id="upload_interval" value="$upload_interval" style="margin:0" /><br />
-      <span style="color:#777;font-size:12px">Time in ms + 3000 ms = 10 seconds</span></td>
+      <span style="color:#777;font-size:12px">Time in ms = 10 seconds</span></td>
       <td style="font-size:14px;vertical-align:top"><p style="margin:5px 0 0 0">Time between uploading two data frames. Use the same value as in the Arduino sketch!</p></td>
     </tr>
     <tr>

@@ -70,7 +70,7 @@ abstract class DeviceRenderer {
    * Renders the overview page
    */
   private function overview() {
-    $timeout = 3000 + $GLOBALS['upload_interval'];
+    $timeout = $GLOBALS['upload_interval'];
     $overview = Loc::t('overview');
     echo <<<code
     <h3>$overview</h3>

@@ -269,7 +269,7 @@ code;
   }
   
   private function show_warning() {
-    $interval = ($GLOBALS['cfg']['upload_interval'] + 3000) / 1000;
+    $interval = $GLOBALS['cfg']['upload_interval'] / 1000;
     $no_data_frames = Loc::t('no data frames');
     $no_data_frames_2 = Loc::t('no data frames 2');
     echo <<<code

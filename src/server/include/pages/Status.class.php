@@ -34,7 +34,7 @@ class Status {
    * Renders the status page
    */
   public function render() {
-    $timeout = 3000 + $GLOBALS['upload_interval'];
+    $timeout = $GLOBALS['upload_interval'];
     echo <<<code
     <div id="live"></div>
     <script type="text/javascript">
@@ -75,11 +75,11 @@ code;
     } else {
       $frames2go = $GLOBALS['db_frame'] - $frame_counter;
       $frames_until = Loc::t('frames until');
-      $minutes2go = (3000 + $GLOBALS['upload_interval']) / 1000 * $frames2go / 60;
+      $minutes2go = $GLOBALS['upload_interval'] / 1000 * $frames2go / 60;
       $minutes2go = Loc::l(number_format($minutes2go, 1, '.', ''));
       $frames_until_2 = Loc::t('frames until 2');
     }
-    $timeout = 3000 + $GLOBALS['upload_interval'];
+    $timeout = $GLOBALS['upload_interval'];
     $current_data_frame = Loc::t('current data frame');
     $last_data_record = Loc::t('last data record');
     $last_data_record_2 = Loc::t('last data record 2');
