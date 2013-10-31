@@ -10,7 +10,9 @@ Das Programm besteht aus zwei Teilen:
 
 **Arduino-Sketch**
 
-Der Arduino-Sketch kommuniziert mit der UVR1611. Dafür brauchst du natürlich ein Arduino-Board (getestet auf dem Leonardo).
+Der Arduino-Sketch kommuniziert mit der UVR1611. Dafür brauchst du natürlich ein Arduino-Board:
+Am besten funktioniert das Arduino Leonardo. Das Arduino Uno ist auch möglich, allerdings fehlerträchtiger beim Datenempfang.
+Andere Boards wurden nicht getestet, sind aber prinzipiell möglich.
 Außerdem musst du ein einfaches Arduino-Shield löten (Spannungsteiler).
 Die UVR1611 gibt ihre Daten mittels eines Manchester-Codes aus. Der Sketch dekodiert dieses Signal und schickt die Daten dann entweder an einen PC über eine serielle Verbindung oder über Ethernet an die uvr2web PHP-App.
 
@@ -48,7 +50,9 @@ The program consists of two parts:
 
 **Arduino sketch**
 
-The Arduino sketch communicates with the UVR1611. Obviously, you need an Arduino board for that (tested on Leonardo).
+The Arduino sketch communicates with the UVR1611. Obviously, you need an Arduino board for that.
+That works best with the Arduino Leonardo. The Uno is possible too, but more buggy concerning data receiving.
+Other Boards were not tested, but are basically possible too.
 Additionally, you have to solder a little Arduino shield (voltage divider).
 The UVR1611 outputs its data with a manchester code. The sketch decodes this signal and then sends the data to either a PC via a serial connection or the uvr2web PHP app via Ethernet.
 
