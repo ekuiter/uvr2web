@@ -14,7 +14,7 @@
 $mode = 'production';
 
 // remove the comment for debug mode (all errors)
-$mode = 'debug';
+//$mode = 'debug';
 
 // remove the comment for links to documentation and information on uvr2web
 $mode .= ' meta';
@@ -23,6 +23,8 @@ $mode .= ' meta';
 date_default_timezone_set('Europe/Berlin');
 
 // ****************************************************************************************
+
+ini_set('memory_limit', -1);
 
 if (stristr($mode, 'debug'))
   error_reporting(-1);
