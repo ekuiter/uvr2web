@@ -1,3 +1,5 @@
+(There is also an English translation below.)
+
 #uvr2web
 
 **Weitere Informationen über uvr2web auf [elias-kuiter.de](http://elias-kuiter.de).**
