@@ -2,7 +2,7 @@
 
 #uvr2web
 
-**Weitere Informationen über uvr2web auf [elias-kuiter.de](http://elias-kuiter.de).**
+**Weitere Informationen über uvr2web auf [meiner Website](http://elias-kuiter.de/projects/uvr2web/).**
 
 uvr2web ist ein Programm zur Überwachung deiner UVR1611-Heizungsregelung.
 Es kann Temperaturdaten visualisieren, diese auf deinem PC oder Smartphone darstellen und vieles mehr.
@@ -104,7 +104,7 @@ Der Ordner `scripts` enthält ein paar Skripte. Sie sind zum Generieren der Doku
 
 # uvr2web
 
-**More information about uvr2web on [elias-kuiter.de](http://elias-kuiter.de).**
+**More information about uvr2web on [my website](http://elias-kuiter.de/projects/uvr2web/en).**
 
 uvr2web is a program for monitoring your UVR1611 heating control.
 It can visualize temperature data on your PC or smartphone and much more.
