@@ -71,6 +71,7 @@ const int additionalBits = /*0*/;
 #include "process.h"
 #include "dump.h"
 #include "web.h"
+#include "mail.h"
 
 void setup() {
 #ifdef USINGPC
@@ -81,7 +82,8 @@ void setup() {
 #ifdef DEBUG
   Serial.println("Press key for detailed output.");
 #else
-  Web::start();  
+  Web::start();
+  Mail::start();
 #endif
 
   Receive::start();
@@ -90,6 +92,11 @@ void setup() {
 void loop() {
   if (!Receive::receiving) {
     Process::start(); // Daten auswerten // process data
+    
+    // Falls das Relais ausgelöst wurde, Mail verschicken
+    // (wird nach jedem Upload, also etwa alle 10 Sekunden überprüft)
+    Mail::check(); 
+    
     Receive::start(); // Daten sammeln // receive data
   }
 
