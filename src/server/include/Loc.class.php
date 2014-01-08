@@ -187,7 +187,9 @@ class Loc {
     'object removed' => 'Object removed successfully.',
     'object enabled' => 'Object enabled successfully.',
     'disabled' => 'is disabled',
-      'enable' => 'enable',
+    'enable' => 'enable',
+    'status ok' => 'Everything alright!',
+    'status failed' => 'Upload problems!',
     ),
 
     'de' => array(
@@ -337,6 +339,8 @@ class Loc {
       'object enabled' => 'Objekt erfolgreich aktiviert.',
       'disabled' => 'ist deaktiviert',
       'enable' => 'aktivieren',
+      'status ok' => 'Alles in Ordnung!',
+    'status failed' => 'Upload-Probleme!',
     ),
     
     'fr' => array(
@@ -487,6 +491,8 @@ class Loc {
       'object enabled' => 'Objet activé avec succès.',
       'disabled' => 'est desactivé',
       'enable' => 'activer',
+      'status ok' => 'Tout est bien!',
+    'status failed' => 'Problèmes avec le téléchargement!',
     ),
   );
 

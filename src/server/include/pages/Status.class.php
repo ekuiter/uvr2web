@@ -84,9 +84,19 @@ code;
     $last_data_record = Loc::t('last data record');
     $last_data_record_2 = Loc::t('last data record 2');
     $last_data_record_3 = Loc::t('last data record 3');
+    if (DataFrame::last_upload() > time() - $GLOBALS['upload_interval']) {
+      $color = 'green';
+      $status = Loc::t('status ok');
+    } else {
+      $color = 'red';
+      $status = Loc::t('status failed');
+    }
     echo <<<code
     <strong style="display:block;font-size:30px;padding-top:30px">
-    <span style="font-size:20px">$md5_hash</span> 「<span style="color:green">$md51 $md52 $md53 $md54</span> 」
+    <span style="color:$color">$status</span>
+    </strong>
+    <strong style="display:block;font-size:20px;padding-top:30px">
+    $md5_hash: <span style="color:green">$md51 $md52 $md53 $md54</span>
     </strong>
     <strong style="display:block;font-size:20px;padding-top:30px">
     <span style="color:green">$frame_counter</span> $frames_uploaded<br />

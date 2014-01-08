@@ -84,6 +84,13 @@ class DataFrame {
   }
 
   /**
+   * Returns the last upload time
+   **/
+  public function last_upload() {
+    return filemtime(self::$file);
+  }
+
+  /**
    * Reads sensor data from raw data frame 
   */
   private function sensors() {
