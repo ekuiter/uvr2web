@@ -30,6 +30,10 @@ namespace Mail {
   }
   
   void check() {
+    if (lastCheck)
+      return;
+    lastCheck = false;
+    
     for (int i = 0; i < 4; i++)
       buttonStates[i] = digitalRead(buttonPins[i]);
       
@@ -39,6 +43,7 @@ namespace Mail {
         Serial.println("Schalter 4 ausgeloest Emailversand aktiviert");
         digitalWrite(ledPin, HIGH);
         sendMail("/mailsender.php");
+        lastCheck = true;
       }
     } else
     digitalWrite(ledPin, LOW);
@@ -49,14 +54,13 @@ namespace Mail {
         Serial.println("Schalter 3 ausgeloest Emailversand aktiviert");
         digitalWrite(ledPin, HIGH);
         sendMail("/mailsender1.php");
+        lastCheck = true;
       }
     } else
     digitalWrite(ledPin, LOW);
       
-    if (Web::client.available()) {
-      char c = Web::client.read();
-      Serial.print(c);
-    }
+    while (Web::client.available())
+      Web::client.read();
     
     if (!Web::client.connected())
       Web::client.stop();
