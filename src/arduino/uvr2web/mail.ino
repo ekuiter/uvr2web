@@ -8,7 +8,7 @@
  Mailen, sobald das Relais (buttonPins) ausgelöst wird
  
  */
- 
+
 #ifndef DEBUG
 
 namespace Mail {
@@ -18,56 +18,59 @@ namespace Mail {
     Web::client.println("Host: " + String(server));
     Web::client.println("Connection: close");
     Web::client.println();
+    Web::client.stop();
   }
 
   void start() {
-    pinMode(ledPin, OUTPUT);
-    for (int i = 0; i < 4; i++)
-      pinMode(buttonPins[i], INPUT_PULLUP);
+    pinMode(buttonPin3, INPUT_PULLUP);
+    pinMode(buttonPin4, INPUT_PULLUP);
+    pinMode(buttonPin5, INPUT_PULLUP);
+    pinMode(ledPin, OUTPUT); 
 
     sendMail("/mailsender3.php");
-    Serial.println("Test Mail zum Neustart wurde versendet");
   }
-  
+
   void check() {
-    if (lastCheck)
-      return;
-    lastCheck = false;
-    
-    for (int i = 0; i < 4; i++)
-      buttonStates[i] = digitalRead(buttonPins[i]);
-      
-    // buttonStates[3] is the fourth button!
-    if (buttonStates[3] != lastButtonStates[3]) {
-      if (buttonStates[3] == LOW) {
-        Serial.println("Schalter 4 ausgeloest Emailversand aktiviert");
+    buttonState3 = digitalRead(buttonPin3);
+    buttonState4 = digitalRead(buttonPin4);
+    buttonState5 = digitalRead(buttonPin5);
+
+
+    if (buttonState3 != lastButtonState3){
+      if (buttonState3 == LOW) { 
         digitalWrite(ledPin, HIGH);
-        sendMail("/mailsender.php");
-        lastCheck = true;
-      }
-    } else
-    digitalWrite(ledPin, LOW);
-    
-    // buttonStates[2] is the third button!
-    if (buttonStates[2] != lastButtonStates[2]) {
-      if (buttonStates[2] == LOW) {
         Serial.println("Schalter 3 ausgeloest Emailversand aktiviert");
-        digitalWrite(ledPin, HIGH);
-        sendMail("/mailsender1.php");
-        lastCheck = true;
+        sendMail("/mailsender.php");
       }
-    } else
-    digitalWrite(ledPin, LOW);
-      
-    while (Web::client.available())
-      Web::client.read();
-    
-    if (!Web::client.connected())
-      Web::client.stop();
-      
-    for (int i = 0; i < 4; i++)
-      lastButtonStates[i] = buttonStates[i];
+    } else {
+      digitalWrite(ledPin, LOW);
+    }   
+
+    if (buttonState4 != lastButtonState4){
+      if (buttonState4 == LOW) {
+        digitalWrite(ledPin, HIGH);
+        Serial.println("Schalter 4 ausgeloest Emailversand aktiviert");
+        sendMail("/mailsender1.php");
+      }
+    } else {
+      digitalWrite(ledPin, LOW);
+    }   
+
+    if (buttonState5 != lastButtonState5){
+      if (buttonState5 == LOW) {
+        digitalWrite(ledPin, HIGH);
+        Serial.println("Schalter 5 ausgeloest Emailversand aktiviert");
+        sendMail("/mailsender2.php");
+      }
+    } else {
+      digitalWrite(ledPin, LOW);
+    }   
+
+    lastButtonState3 = buttonState3;
+    lastButtonState4 = buttonState4;
+    lastButtonState5 = buttonState5;
   }
 }
 
 #endif
+
