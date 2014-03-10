@@ -167,9 +167,14 @@ abstract class Device {
    * Renders a single device
   */
   public function render_page() {
-    $this->page_title();
-    $this->chart();
-    method_exists($this, 'page_additional') ? $this->page_additional() : 0;
+    $month = isset($_GET['month']) ? $_GET['month'] : 1;
+    $this->page_title($month);
+    $this->fetch_data($month);
+    if ($this->data) {
+      $this->chart($month);
+      method_exists($this, 'page_additional') ? $this->page_additional() : 0;
+    } else
+      echo Loc::t('no data');
   }
   
   /**
@@ -194,13 +199,45 @@ code;
   /**
    * Renders the page title 
   */
-  protected function page_title() {
+  protected function page_title($selected_month = 1) {
     $alias = $this->get_alias();
     $separator = $this->get_separator();
     $separator = $separator ? $separator->get_alias() . ':' : '';
     $number = '「' . (property_exists($this, 'number') ? $this->number : $this->no) . '」';
     $number = property_exists($this, 'number') && !$this->number ? '' : $number;
-    echo "<h3><span class=\"number\">$number</span>$separator $alias</h3>";
+    echo "<h3>
+      <span class=\"number\">$number</span>$separator $alias
+      <span style=\"float: right\">
+        <select onchange=\"
+        if (this.selectedIndex == 0)
+          window.location.href = '?p=$this->type_plural&no=$this->no&month=all';
+        else
+          window.location.href = '?p=$this->type_plural&no=$this->no&month=' + this.selectedIndex;
+        \">";
+    $months = $this->get_months();
+    foreach ($months as $index => $month) {
+      $selected = $selected_month == $index ? " selected" : "";
+      if ($month == Loc::t('all') && $selected_month == 'all') $selected = " selected";
+      echo "<option$selected>$month</option>";
+    }
+    echo "</select>
+      </span>
+    </h3>";
+  }
+  
+  protected function get_months() {
+    $months = array();
+    $next = DB::query('SELECT timestamp FROM uvr2web_data 
+                     ORDER BY timestamp ASC LIMIT 1')
+            [0]['timestamp'];
+    while (strtotime($next) < time()) {
+      $next = date('Y-m-d H:i:s', strtotime("+1 month", strtotime($next)));
+      $timestamp = Loc::mysql_timestamp($next);
+      $timestamp['l'] = 'month';
+      $months[] = Loc::l($timestamp);
+    }
+    $months[] = Loc::t('all');
+    return array_reverse($months);
   }
 
   /**
@@ -208,8 +245,7 @@ code;
    *
    * Uses AJAX to auto-update the chart.
   */
-  public function chart() {
-    $this->fetch_data();
+  public function chart($month = 1) {
     $timeout = $GLOBALS['upload_interval'];
     echo "<div id=\"$this->type$this->no\"></div>";
     $chart = new Highchart(Highchart::HIGHSTOCK);
@@ -230,9 +266,23 @@ code;
   		});
 		}
 code;
-    $chart->chart->events->load = new HighchartJsExpr($expr);
+    if ($month == 1)
+      $chart->chart->events->load = new HighchartJsExpr($expr);
     $chart->series[0] = array('name' => $this->get_alias(), 'data' => $this->data);
-    $chart->rangeSelector->selected = 0;
+    if ($month == 'all') {
+      $select = "0, {type: 'all'}";
+      $chart->rangeSelector->buttons = array(
+        array('type' => 'all', 'text' => Loc::t('all'))
+      );
+    } else {
+      $select = "1, {type: 'week', count: 1}";
+      $chart->rangeSelector->buttons = array(
+        array('type' => 'day', 'count' => 1, 'text' => Loc::t('day')),
+        array('type' => 'week', 'count' => 1, 'text' => Loc::t('week')),
+        array('type' => 'month', 'count' => 1, 'text' => Loc::t('month'))
+      );
+    }
+    $chart->rangeSelector->buttonTheme = array('width' => 80);
     $render = $chart->render();
     echo <<<code
     <script type="text/javascript">
@@ -243,6 +293,7 @@ code;
           }
         });
         var $this->type$this->no = $render
+        $this->type$this->no.rangeSelector.clickButton($select, true);
     /* ]]> */
 </script>
 code;
@@ -251,8 +302,15 @@ code;
   /**
    * Fetches all device data from the database
   */
-  private function fetch_data() {
-    $result = DB::query('SELECT * FROM uvr2web_data');
+  private function fetch_data($month = 1) {
+    if ($month == 'all')
+      $result = DB::query('SELECT * FROM uvr2web_data');
+    else {
+      if (!is_numeric($month) || $month < 1) $month = 1;
+      $result = DB::query('SELECT * FROM uvr2web_data
+        WHERE timestamp <= NOW() - INTERVAL '.($month-1).' MONTH
+          AND timestamp >= NOW() - INTERVAL '.($month  ).' MONTH');
+    }
     foreach ($result as $row) {
       $data = array();
       $data[0] = strtotime($row['timestamp']) * 1000;
@@ -260,6 +318,7 @@ code;
       $data[1] = $this->fetch_by($data_frame);
       $this->data[] = $data;
     }
+    if (!$result) $this->data = array();
   }
 
   /**

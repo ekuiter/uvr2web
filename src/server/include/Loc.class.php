@@ -190,6 +190,11 @@ class Loc {
     'enable' => 'enable',
     'status ok' => 'Everything alright!',
     'status failed' => 'Upload problems!',
+    'no data' => 'No data for this month!',
+    'day' => 'Day',
+    'week' => 'Week',
+    'month' => 'Month',
+    'all' => 'All',
     ),
 
     'de' => array(
@@ -341,6 +346,11 @@ class Loc {
       'enable' => 'aktivieren',
       'status ok' => 'Alles in Ordnung!',
     'status failed' => 'Upload-Probleme!',
+    'no data' => 'Keine Daten für diesen Monat!',
+    'day' => 'Tag',
+    'week' => 'Woche',
+    'month' => 'Monat',
+    'all' => 'Alles',
     ),
     
     'fr' => array(
@@ -493,6 +503,11 @@ class Loc {
       'enable' => 'activer',
       'status ok' => 'Tout est bien!',
     'status failed' => 'Problèmes avec le téléchargement!',
+    'no data' => 'Aucune donnée pour ce mois!',
+    'day' => 'Jour',
+    'week' => 'Semaine',
+    'month' => 'Mois',
+    'all' => 'Tous',
     ),
   );
 
@@ -552,7 +567,17 @@ class Loc {
   public static function l($value) {
     if (is_array($value)) {
       if (isset($value['l'])) {
-        if ($value['l'] == 'date') {
+        if ($value['l'] == 'month') {
+          $months = Loc::t('months');
+          $month = $months[(int) $value[1] - 1];
+          switch (self::$language) {
+          case 'en':
+          case 'fr':
+          case 'de':
+            return "$month $value[0]";
+            break;
+          }
+        } else if ($value['l'] == 'date') {
           $months = Loc::t('months');
           $month = $months[(int) $value[1] - 1];
           switch (self::$language) {
