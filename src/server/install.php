@@ -6,7 +6,7 @@
  * @package default
  */
 
-require_once 'include/Installer.class.php';
+require_once dirname(__FILE__).'/include/Installer.class.php';
 
 new Installer();
 

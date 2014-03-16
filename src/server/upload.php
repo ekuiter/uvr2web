@@ -6,7 +6,7 @@
  * @package default
  */
 
-require_once 'include/init.inc.php';
+require_once dirname(__FILE__).'/include/init.inc.php';
 
 new Uploader();
 

@@ -6,11 +6,11 @@
  * @package Devices
  */
 
-require_once 'Sensor.class.php';
-require_once 'Output.class.php';
-require_once 'HeatMeter.class.php';
-require_once 'SpeedStep.class.php';
-require_once 'Separator.class.php';
+require_once dirname(__FILE__).'/Sensor.class.php';
+require_once dirname(__FILE__).'/Output.class.php';
+require_once dirname(__FILE__).'/HeatMeter.class.php';
+require_once dirname(__FILE__).'/SpeedStep.class.php';
+require_once dirname(__FILE__).'/Separator.class.php';
 
 /**
  * Core class for all device types

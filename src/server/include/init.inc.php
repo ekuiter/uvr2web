@@ -35,16 +35,18 @@ if (stristr($mode, 'meta'))
 else
   $GLOBALS['meta_nav'] = false;
 
-require_once 'Config.class.php';
-require_once 'Loc.class.php';
-require_once 'DB.class.php';
-require_once 'Renderer.class.php';
-require_once 'DeviceRenderer.class.php';
-require_once 'AdminRenderer.class.php';
-require_once 'highcharts/Highchart.php';
-require_once 'dataframe/Device.class.php';
-require_once 'dataframe/DataFrame.class.php';
-require_once 'notifications/Notifier.class.php';
+require_once dirname(__FILE__).'/Config.class.php';
+require_once dirname(__FILE__).'/Loc.class.php';
+require_once dirname(__FILE__).'/DB.class.php';
+require_once dirname(__FILE__).'/Renderer.class.php';
+require_once dirname(__FILE__).'/DeviceRenderer.class.php';
+require_once dirname(__FILE__).'/AdminRenderer.class.php';
+require_once dirname(__FILE__).'/highcharts/Highchart.php';
+require_once dirname(__FILE__).'/dataframe/Device.class.php';
+require_once dirname(__FILE__).'/dataframe/DataFrame.class.php';
+require_once dirname(__FILE__).'/notifications/Notifier.class.php';
+
+Config::init();
 
 try {
   $GLOBALS['cfg'] = Config::get_config();
@@ -62,7 +64,7 @@ if ($GLOBALS['cfg']['active'] != 'true') {
 code;
   die($code);
 }
-if (file_exists('install.php')) {
+if (file_exists(dirname(__FILE__).'/../install.php')) {
   $code = <<<code
   $header
 	<p>To finish the installation, you have to delete <em>install.php</em> with your FTP client.</p>
@@ -80,6 +82,7 @@ DB::start($GLOBALS['cfg']['server'], $GLOBALS['cfg']['username'], $GLOBALS['cfg'
 DB::connect();
 
 Loc::init();
+DataFrame::init();
 
 $data = DataFrame::open();
 HeatMeter::detect_order($data);

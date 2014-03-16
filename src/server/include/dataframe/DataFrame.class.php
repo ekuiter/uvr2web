@@ -6,8 +6,8 @@
  * @package DataFrame
  */
 
-require_once 'Uploader.class.php';
-require_once 'FrameCounter.class.php';
+require_once dirname(__FILE__).'/Uploader.class.php';
+require_once dirname(__FILE__).'/FrameCounter.class.php';
 
 /**
  * Data frame processing
@@ -34,7 +34,14 @@ class DataFrame {
   /**
    * File path for latest data frame
   */
-  public static $file = 'include/uvr';
+  public static $file;
+  
+  /**
+   * Initializes the DataFrame class
+   */
+  public static function init() {
+    self::$file = dirname(__FILE__).'/../uvr';
+  }
 
   /**
    * Processes the uploading data frame

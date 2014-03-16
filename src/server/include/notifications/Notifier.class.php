@@ -6,9 +6,9 @@
  * @package Notifications
  */
 
-require_once 'Notification.class.php';
-require_once 'NoUploadNotification.class.php';
-require_once 'BackupNotification.class.php';
+require_once dirname(__FILE__).'/Notification.class.php';
+require_once dirname(__FILE__).'/NoUploadNotification.class.php';
+require_once dirname(__FILE__).'/BackupNotification.class.php';
 
 /**
  * Notifier

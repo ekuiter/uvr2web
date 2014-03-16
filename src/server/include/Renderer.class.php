@@ -82,7 +82,7 @@ class Renderer {
       $_SESSION['role'] = $result[0]['role'];
       header('Location: ' . dirname($_SERVER["PHP_SELF"]));
     } else {
-      require_once 'include/pages/Login.class.php';
+      require_once dirname(__FILE__).'/pages/Login.class.php';
       Login::$fail = true;
     }
   }
@@ -118,9 +118,9 @@ class Renderer {
    * Creates a renderer object
    */
   private function include_page() {
-    if (!is_file('include/pages/' . $this->page . '.class.php'))
+    if (!is_file(dirname(__FILE__).'/pages/' . $this->page . '.class.php'))
       $this->page = 'NotFound';
-    require_once 'include/pages/' . $this->page . '.class.php';
+    require_once dirname(__FILE__).'/pages/' . $this->page . '.class.php';
     $this->obj = new $this->page();
   }
 

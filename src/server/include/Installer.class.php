@@ -14,10 +14,10 @@
  * @package Installer
  */
 
-require_once 'include/Loc.class.php';
-require_once 'include/Config.class.php';
-require_once 'include/DB.class.php';
-require_once 'include/dataframe/FrameCounter.class.php';
+require_once dirname(__FILE__).'/Loc.class.php';
+require_once dirname(__FILE__).'/Config.class.php';
+require_once dirname(__FILE__).'/DB.class.php';
+require_once dirname(__FILE__).'/dataframe/FrameCounter.class.php';
 
 class Installer {
 
@@ -29,6 +29,7 @@ class Installer {
   public function __construct() {
     $header = Loc::t('header');
     $footer = Loc::t('footer');
+    Config::init();
     try {
       $config = Config::get_config();
     } catch (Exception $e) {

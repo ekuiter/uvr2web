@@ -38,7 +38,7 @@ class Admin {
     if (isset($_GET['sub'])) {
       $this->sub = ucfirst(preg_replace('/[^a-zA-Z0-9_]+/', '', $_GET['sub']));
       $this->sub = str_replace(' ', '', ucwords(str_replace('_', ' ', $this->sub)));
-      if (!is_file('include/pages/admin/' . $this->sub . '.class.php'))
+      if (!is_file(dirname(__FILE__).'/admin/' . $this->sub . '.class.php'))
         $this->sub = 'Start';
     }
   }
@@ -57,7 +57,7 @@ class Admin {
     if ($this->sub == 'Start')
       $this->start();
     else {
-      require_once 'include/pages/admin/' . $this->sub . '.class.php';
+      require_once dirname(__FILE__).'/admin/' . $this->sub . '.class.php';
       $this->obj = new $this->sub();
       echo '<h2>' . $this->obj->title() . '</h2>';
       $this->obj->render();
@@ -150,7 +150,7 @@ code;
   function live() {
     header('Content-Type: application/octet-stream');
     header('Content-Disposition: attachment; filename="uvr2web-'.date('Y-m-d').'.sql"');
-    require_once 'admin/Backup.class.php';
+    require_once dirname(__FILE__).'/admin/Backup.class.php';
     $backup = new Backup();
     $backup->do_backup();
   }

@@ -19,11 +19,18 @@ class Config {
   /*
    * Path to the configuration file
    */
-  static $config_file = 'include/cfg';
+  static $config_file;
   /*
    * Default configuration
    */
   static $default_config = array('active' => 'false');
+  
+  /**
+   * Initializies the Config class
+   */
+  public static function init() {
+    self::$config_file = dirname(__FILE__).'/cfg';
+  }
 
   /*
    * Reads configuration file
