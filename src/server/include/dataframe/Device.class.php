@@ -298,6 +298,17 @@ code;
 </script>
 code;
   }
+  
+  private function process_result($result) {
+    foreach ($result as $row) {
+      $data = array();
+      $data[0] = strtotime($row['timestamp']) * 1000;
+      $data_frame = unserialize($row['data_frame']);
+      $data[1] = $this->fetch_by($data_frame);
+      $this->data[] = $data;
+    }
+    if (!$result) $this->data = array();
+  }
 
   /**
    * Fetches all device data from the database
@@ -311,14 +322,18 @@ code;
         WHERE timestamp <= NOW() - INTERVAL '.($month-1).' MONTH
           AND timestamp >= NOW() - INTERVAL '.($month  ).' MONTH');
     }
-    foreach ($result as $row) {
-      $data = array();
-      $data[0] = strtotime($row['timestamp']) * 1000;
-      $data_frame = unserialize($row['data_frame']);
-      $data[1] = $this->fetch_by($data_frame);
-      $this->data[] = $data;
-    }
-    if (!$result) $this->data = array();
+    $this->process_result($result);
+  }
+  
+  public function fetch_data_api($start, $end = null) {
+    if ($start == 'all')
+      $result = DB::query('SELECT * FROM uvr2web_data');
+    else
+      $result = DB::query("SELECT * FROM uvr2web_data
+        WHERE timestamp >= '$start'
+          AND timestamp <= '$end'");
+    $this->process_result($result);
+    return $this->data;
   }
 
   /**

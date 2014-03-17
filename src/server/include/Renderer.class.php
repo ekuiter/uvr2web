@@ -74,7 +74,6 @@ class Renderer {
    * Login if unauthenticated
    */
   private function log_in() {
-    $valid = false;
     $result = DB::query('SELECT * FROM uvr2web_users WHERE username="' . DB::escape($_POST['username']) . '"');
     if ($result && $result[0]['password'] == md5($_POST['password'])) {
       $_SESSION['logged_in'] = true;

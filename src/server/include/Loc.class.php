@@ -510,6 +510,10 @@ class Loc {
     'all' => 'Tous',
     ),
   );
+  
+  public static function languages() {
+    return array_keys(self::$table);
+  }
 
   /**
    * Gets the language

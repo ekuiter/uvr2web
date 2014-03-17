@@ -45,6 +45,7 @@ require_once dirname(__FILE__).'/highcharts/Highchart.php';
 require_once dirname(__FILE__).'/dataframe/Device.class.php';
 require_once dirname(__FILE__).'/dataframe/DataFrame.class.php';
 require_once dirname(__FILE__).'/notifications/Notifier.class.php';
+require_once dirname(__FILE__).'/api/Api.class.php';
 
 Config::init();
 

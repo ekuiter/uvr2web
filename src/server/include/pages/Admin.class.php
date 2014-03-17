@@ -148,11 +148,8 @@ code;
   }
   
   function live() {
-    header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename="uvr2web-'.date('Y-m-d').'.sql"');
-    require_once dirname(__FILE__).'/admin/Backup.class.php';
-    $backup = new Backup();
-    $backup->do_backup();
+    require_once dirname(__FILE__).'/../api/SystemApi.class.php';
+    (new SystemApi())->backup();
   }
 
 }

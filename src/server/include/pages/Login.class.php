@@ -70,7 +70,7 @@ class Login {
             <span class="icon-bar"></span>
           </button>
           <div id="loading"></div>
-          <a class="brand" href="?p=home">uvr2web</a>
+          <a class="brand" href="#">uvr2web</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               $nav
