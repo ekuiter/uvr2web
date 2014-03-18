@@ -93,7 +93,7 @@ class DataFrame {
   /**
    * Returns the last upload time
    **/
-  public function last_upload() {
+  public static function last_upload() {
     return filemtime(self::$file);
   }
 

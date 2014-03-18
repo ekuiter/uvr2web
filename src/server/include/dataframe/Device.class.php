@@ -353,11 +353,18 @@ code;
    * GD library needed.
    * @param int $size
   */
-  public function image($size) {
-    if ($size == 970) {
-      $x = 258;
-      $y = 30;
-    } else if ($size == 780) {
+  public function image($size = null, $y = null, $color = null) {
+    if (!$color)
+      $color = '#0080c0';
+    if ($y)
+      $x = $size;
+    else {
+      if (!$size)
+        $size = 970;
+      if ($size == 970) {
+        $x = 258;
+        $y = 30;
+      } else if ($size == 780) {
         $x = 208;
         $y = 30;
       } else if ($size == 600) {
@@ -367,12 +374,14 @@ code;
         $x = $size - 12;
         $y = 30;
       }
-    header("Content-Type: image/png");
+      if (!$x || !$y) throw new Exception('invalid window width');
+    }
     $img = imagecreatetruecolor($x, $y);
     imagesavealpha($img, true);
     $trans_color = imagecolorallocatealpha($img, 255, 255, 255, 127);
     imagefill($img, 0, 0, $trans_color);
-    $color = imagecolorallocate($img, 0, 128, 192);
+    list($r, $g, $b) = $this->hex_to_rgb($color);
+    $color = imagecolorallocate($img, $r, $g, $b);
     $data = array();
     $result = DB::query("SELECT data_frame FROM uvr2web_data ORDER BY timestamp DESC LIMIT $x");
     foreach ($result as $row) {
@@ -389,7 +398,27 @@ code;
         imagesetpixel($img, $i, $data[$i] - 1, $color);
       }
     }
+    header("Content-Type: image/png");
     imagepng($img);
+  }
+  
+  protected function hex_to_rgb($hex) {   
+    if ($hex[0] == "#")
+      $hex = substr($hex, 1);
+    if (strlen($hex) == 3) {
+      $r = hexdec($hex[0].$hex[0]);
+      $g = hexdec($hex[1].$hex[1]);
+      $b = hexdec($hex[2].$hex[2]);
+    } else if (strlen($hex) == 6) {
+      $r = substr($hex, 0, 2);
+      $g = substr($hex, 2, 2);
+      $b = substr($hex, 4, 2);
+      $r = hexdec($r);
+      $g = hexdec($g);
+      $b = hexdec($b);
+    } else
+      throw new Exception('color format invalid');
+    return array($r, $g, $b);
   }
   
   /**

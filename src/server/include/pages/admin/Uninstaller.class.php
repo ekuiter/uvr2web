@@ -45,10 +45,8 @@ code;
   }
 
   private function uninstall() {
-    Config::delete_config();
-    DataFrame::delete();
-    $this->delete_tables();
-    session_destroy();
+    require_once dirname(__FILE__).'/../../api/SystemApi.class.php';
+    (new SystemApi())->uninstall($GLOBALS['cfg']['password']);
     $body2 = Loc::t('uninstall body 2');
     echo <<<code
     <form method="post" action="index.php?p=admin&sub=uninstaller">
@@ -57,12 +55,6 @@ code;
     </ol>
     </form>
 code;
-  }
-  
-  private function delete_tables() {
-    DB::query('DROP TABLE uvr2web_config');
-    DB::query('DROP TABLE uvr2web_data');
-    DB::query('DROP TABLE uvr2web_users');
   }
 
 }

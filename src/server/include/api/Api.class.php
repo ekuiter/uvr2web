@@ -25,7 +25,6 @@ class Api {
   function __construct() {
     try {
       session_start();
-      header('Content-Type: application/json; charset=utf-8');
       $this->parse($_SERVER['QUERY_STRING']);
       $result = $this->call();
       $this->render($result);
@@ -46,7 +45,11 @@ class Api {
       $this->render($this->api_functions_with_arguments()) or die();
     if (!$space || !$func)
       throw new Exception('namespace and function required');
-    $args = @explode(',', @explode(')', @explode('(', $string)[1])[0]);
+    $all_in_one = @explode(')', @explode('(', $string)[1])[0];
+    if (substr($all_in_one, 0, 3) == '!!!')
+      $args = array(substr($all_in_one, 3));
+    else
+      $args = @explode(',', $all_in_one);
     $args = array_map('urldecode', $args);
     $args = array_map('trim', $args);
     if (count($args) == 1 && $args[0] === '') $args = array();
@@ -68,7 +71,17 @@ class Api {
   }
   
   private function render($result) {
-    echo json_encode($result);
+    if (!$this->content_type()) {
+      header('Content-Type: application/json; charset=utf-8');
+      echo json_encode($result);
+    }
+  }
+  
+  private function content_type() {
+    foreach (headers_list() as $header)
+      if (strstr($header, 'Content-Type'))
+        return $header;
+    return false;
   }
   
   private function before_filter($space_obj) {

@@ -33,9 +33,21 @@ class SystemApi {
     $backup->do_backup();
   }
   
-  function uninstall() {
+  function uninstall($confirm) {
+    if ($confirm != $GLOBALS['cfg']['password'])
+      throw new Exception('confirm with database password');
+    Config::delete_config();
+    DataFrame::delete();
+    $this->delete_tables();
+    session_destroy();
     ApiHelper::authenticate('admin');
     return 'TODO: implement uninstaller';
+  }
+  
+  private function delete_tables() {
+    DB::query('DROP TABLE uvr2web_config');
+    DB::query('DROP TABLE uvr2web_data');
+    DB::query('DROP TABLE uvr2web_users');
   }
 
 }

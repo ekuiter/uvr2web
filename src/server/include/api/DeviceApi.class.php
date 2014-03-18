@@ -20,8 +20,65 @@ class DeviceApi {
     ApiHelper::authenticate();
   }
   
-  function index($order = null) {
-    return 'TODO: return device order / set device order';
+  function index($structure = null) {
+    if ($structure) {
+      ApiHelper::authenticate('admin');
+      $structure = json_decode($structure, true);
+      if (isset($structure['sensors'])) $this->set_structure('Sensor', $structure['sensors']);
+      if (isset($structure['outputs'])) $this->set_structure('Output', $structure['outputs']);
+      if (isset($structure['heat_meters'])) $this->set_structure('HeatMeter', $structure['heat_meters']);
+      if (isset($structure['speed_steps'])) $this->set_structure('SpeedStep', $structure['speed_steps']);
+    }
+    return array(
+      'sensors' => $this->get_structure('Sensor'),
+      'outputs' => $this->get_structure('Output'),
+      'heat_meters' => $this->get_structure('HeatMeter'),
+      'speed_steps' => $this->get_structure('SpeedStep')
+    );
+  }
+  
+  private function to_underscore($camel_case) {
+    return substr(strtolower(preg_replace('/([A-Z])/', '_$1', $camel_case)), 1);
+  }
+  
+  private function get_structure($class) {
+    $i = 1;
+    $structure = array();
+    foreach ($class::get_order() as $group) {
+      $devices = array();
+      foreach ($group as $device)
+        $devices[] = array('id' => $device, 'alias' => (new $class($device))->get_alias());
+      $structure[(new Separator($i, $this->to_underscore($class)))->get_alias()] = $devices;
+      $i++;
+    }
+    return $structure;
+  }
+  
+  private function set_structure($class, $structure) {
+    $reporting = error_reporting();
+    error_reporting(0);
+    $i = 1;
+    foreach ($structure as $separator => $group) {
+      if (error_get_last()) throw new Exception('structure parse failed');
+      (new Separator($i, $this->to_underscore($class)))->set_alias($separator);
+      foreach ($group as $device) {
+        $obj = new $class($device['id']);
+        $alias = $device['alias'];
+        if (error_get_last()) throw new Exception('structure parse failed');
+        $obj->set_alias($alias);
+      }
+      $i++;
+    }
+    $order = array();
+    $i = 0;
+    foreach ($structure as $group) {
+      foreach ($group as $device)
+        $order[$i][] = $device['id'];
+      $i++;
+    }
+    if (error_get_last()) throw new Exception('structure parse failed');
+    $class::set_order($order);
+    error_reporting($reporting);
   }
   
   function read($device = null, $start = null, $end = null) {  
@@ -68,8 +125,12 @@ class DeviceApi {
     return $obj->fetch_data_api($start->expand(), $end);
   }
   
-  function thumbnail() {
-    return 'TODO: return thumbnail';
+  function thumbnail($device, $size = null, $y = null, $color = null) {
+    $class = $this->get_class($device);
+    $number = $this->get_number($device);
+    $obj = new $class($number);
+    $size = (int) str_replace('px', '', $size);
+    $obj->image($size, $y, $color);
   }
   
   private function get_class($device) {

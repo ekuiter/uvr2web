@@ -135,6 +135,8 @@ class DB { // Datenbank
     self::$rows = @mysqli_affected_rows(self::$db);
     if (!$query)
       return false;
+    else if ($query === true)
+      return array();
     $result = array();
     $i = 0;
     while (false != ($row = @mysqli_fetch_assoc($query))) {
