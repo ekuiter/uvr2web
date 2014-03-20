@@ -102,6 +102,10 @@ Der Arduino-Sketch hat Inline-Kommentare, die zur Dokumentation dienen. Für die
 
 Der Ordner `scripts` enthält ein paar Skripte. Sie sind zum Generieren der Dokumentation und zum Zählen von Codezeilen. Du kannst sie ignorieren.
 
+## Spezifikation
+
+Ich habe außerdem noch die technischen Daten zur UVR1611 im Ordner `datasheets` abgelegt (diese stammen direkt von TA (http://www.ta.co.at)). Dort gibt es Infos zum CAN- und DL-Bus und das Handbuch der Regelung. Für Arduino-Bastler ist insbesondere der (auch hier genutzte) DL-Bus interessant, da er relativ einfach und günstig anzusteuern ist.
+
 # uvr2web
 
 **More information about uvr2web on [my website](http://elias-kuiter.de/projects/uvr2web/en).**
@@ -205,3 +209,7 @@ The Arduino sketch has inline documentation through comments. For the PHP app th
 ## Scripts
 
 The `scripts` folder contains a few scripts. They are for generating the documentation and counting lines of code. You can ignore them.
+
+## Data sheets
+
+I added the UVR1611 datasheets in the respective folder. (They are from the heating control's manufacturer TA (http://www.ta.co.at).) There's a manual and info on the CAN and DL buses. For use with Arduino I recommend the DL bus because it's easy and cheap to use.
