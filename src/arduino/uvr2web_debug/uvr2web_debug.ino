@@ -26,21 +26,33 @@
 // Wenn das nicht erscheint, sind die Pinangaben nicht
 // korrekt oder die physische Verbindung zur UVR funktioniert nicht.
 
-const byte dataPin = 2;
-const byte interrupt = 0;
+const byte dataPin = /*2*/;
+const byte interrupt = /*1*/;
+
+// mit diesem Wert kannst du einstellen, wie viele Daten der Sketch
+// mitschneiden soll. Für den Anfang belasse ihn auf 1, dann werden
+// genau zwei UVR-Datenrahmen protokolliert (1312 Bytes).
+// Falls du jedoch Zusatzhardware am DL-Bus benutzt, musst du evtl.
+// hier Anpassungen vornehmen. (Damit ähnelt diese Einstellung
+// 'additionalBits' aus dem Hauptsketch.)
+// Um bspw. die vierfache Menge an Daten mitzuschreiben, trage hier 4 ein.
+// Je größer dieser Wert, desto länger dauert der Datenempfang!
+// Größer als 8 sollte dieser Wert nicht eingestellt werden, denn sonst
+// reicht der Arbeitsspeicher des Arduino nicht aus.
+
+const byte factor = /*1*/;
 
 // sobald der Sketch hochgeladen wird
 
 void setup() {
   Serial.begin(115200);
-  // beim Leonardo darf folgende Zeile nicht kommentiert sein 
-  //while(!Serial);
+  while(!Serial);
   start();
 }
 
 byte finished = false;
 // hier werden die von der UVR empfangenen Bits gespeichert.
-const int bit_number = (64 * (8 + 1 + 1) + 16) * 2;
+const int bit_number = (64 * (8 + 1 + 1) + 16) * 2 * factor;
 const int byte_number = bit_number / 8 + 1;
 byte data_bits[byte_number];
 
@@ -118,7 +130,7 @@ void process_bit(byte b) {
   got_first = false;
   write_bit(bit_count, b);
   bit_count++;
-  if (bit_count == 1312)
+  if (bit_count == bit_number)
     stop();
 }
 
