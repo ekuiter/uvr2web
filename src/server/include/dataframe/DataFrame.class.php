@@ -98,7 +98,7 @@ class DataFrame {
   }
   
   public static function upload_ok() {
-    return self::last_upload() > time() - $GLOBALS['upload_interval'] / 1000;
+    return self::last_upload() > time() - $GLOBALS['upload_interval'] * 2 / 1000;
   }
 
   /**

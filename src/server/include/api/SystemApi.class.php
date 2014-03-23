@@ -22,8 +22,8 @@ class SystemApi {
   public $backup_ex = array('system.backup');
   public $uninstall = 'Uninstalls uvr2web (admin-only).';
   public $uninstall_ex = array('system.uninstall(db_pass)');
-  public $upload_ok = 'Returns whether the Arduino is uploading data properly (admin-only).';
-  public $upload_ok_ex = array('system.upload_ok');
+  public $status = 'Returns information regarding the upload status (admin-only).';
+  public $status_ex = array('system.status');
 
   function language($language = null) {
     if (in_array($language, Loc::languages())) {
@@ -59,9 +59,17 @@ class SystemApi {
     DB::query('DROP TABLE uvr2web_users');
   }
   
-  function upload_ok() {
+  function status() {
     ApiHelper::authenticate('admin');
-    return DataFrame::upload_ok();
+    $frames_uploaded = FrameCounter::get();
+    $frames_remaining = $GLOBALS['db_frame'] - $frames_uploaded;
+    return array(
+      'uploading' => DataFrame::upload_ok(),
+      'last_upload' => DataFrame::last_upload(),
+      'frames_uploaded' => $frames_uploaded,
+      'frames_remaining' => $frames_remaining,
+      'minutes_remaining' => $GLOBALS['upload_interval'] / 1000 * $frames_remaining / 60
+    );
   }
 
 }
