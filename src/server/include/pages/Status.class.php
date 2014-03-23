@@ -84,7 +84,7 @@ code;
     $last_data_record = Loc::t('last data record');
     $last_data_record_2 = Loc::t('last data record 2');
     $last_data_record_3 = Loc::t('last data record 3');
-    if (DataFrame::last_upload() > time() - $GLOBALS['upload_interval']) {
+    if (DataFrame::upload_ok()) {
       $color = 'green';
       $status = Loc::t('status ok');
     } else {

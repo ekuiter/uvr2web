@@ -96,6 +96,10 @@ class DataFrame {
   public static function last_upload() {
     return filemtime(self::$file);
   }
+  
+  public static function upload_ok() {
+    return self::last_upload() > time() - $GLOBALS['upload_interval'] / 1000;
+  }
 
   /**
    * Reads sensor data from raw data frame 

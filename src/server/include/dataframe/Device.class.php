@@ -374,7 +374,7 @@ code;
         $x = $size - 12;
         $y = 30;
       }
-      if (!$x || !$y) throw new Exception('invalid window width');
+      if (!isset($x) || !isset($y) || !$x || !$y) throw new Exception('invalid window width');
     }
     $img = imagecreatetruecolor($x, $y);
     imagesavealpha($img, true);

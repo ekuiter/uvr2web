@@ -42,7 +42,7 @@ class Api {
     $space = @explode('.', $func)[0];
     $func = @explode('.', $func)[1];
     if (!$space && !$func)
-      $this->render($this->api_functions_with_arguments()) or die();
+      $this->render($this->api_functions_overview()) or die();
     if (!$space || !$func)
       throw new Exception('namespace and function required');
     $all_in_one = @explode(')', @explode('(', $string)[1])[0];
@@ -108,11 +108,17 @@ class Api {
     return $functions;
   }
   
-  private function api_functions_with_arguments() {
+  private function api_functions_overview() {
     $functions = array();
-    foreach ($this->api_functions() as $namespace => $functions_in_namespace)
+    foreach ($this->api_functions() as $namespace => $functions_in_namespace) {
+      $space_obj = (new ApiFunctions())->$namespace;
       foreach ($functions_in_namespace as $function_in_namespace)
-        $functions[$namespace][$function_in_namespace] = $this->arguments($namespace, $function_in_namespace);
+        $functions[$namespace][$function_in_namespace] = array(
+          'desc' => property_exists($space_obj, $function_in_namespace) ? $space_obj->$function_in_namespace : null,
+          'examples' => property_exists($space_obj, $function_in_namespace.'_ex') ? $space_obj->{$function_in_namespace.'_ex'} : null,
+          'args' => $this->arguments($namespace, $function_in_namespace)
+        );
+    }
     return $functions;
   }
   

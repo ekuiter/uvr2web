@@ -16,6 +16,11 @@
 
 class AuthApi {
   
+  public $login = 'Log in to uvr2web using a username and a password.';
+  public $login_ex = array('auth.login(my_user,my_pass)');
+  public $logout = 'Log out (login required).';
+  public $logout_ex = array('account.logout');
+  
   function login($username, $password) {
     if (ApiHelper::logged_in())
       throw new Exception('already logged in');

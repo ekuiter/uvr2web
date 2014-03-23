@@ -16,6 +16,17 @@
 
 class AccountApi {
   
+  public $index = 'Returns a list of uvr2web accounts (admin-only).';
+  public $index_ex = array('account.index');
+  public $create = 'Creates a new account with the given options (admin-only).';
+  public $create_ex = array('account.create(my_user,my_pass,my_pass,user)', 'account.create(my_user,my_pass,my_pass,admin)');
+  public $read = 'Reads an account with the given id (admin-only).';
+  public $read_ex = array('account.read(1)');
+  public $update = 'Updates an account with the given id and options (admin-only).';
+  public $update_ex = array('account.update(1,new_user,,,admin)', 'account.update(1,new_user,new_pass,new_pass,admin)');
+  public $destroy = 'Destroys an account with the given id and username (admin-only).';
+  public $destroy_ex = array('account.destroy(1,my_user)');
+  
   function __before() {
     ApiHelper::authenticate('admin');
   }

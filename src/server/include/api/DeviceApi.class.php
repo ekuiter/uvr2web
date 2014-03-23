@@ -16,6 +16,13 @@
 
 class DeviceApi {
   
+  public $index = 'Returns (login required) or sets (admin-only) the device structure (including aliases and order).';
+  public $index_ex = array('device.index', 'device.index(!!!{"sensors":{"...":[...]},"outputs":{"...":[...]},"heat_meters":{"...":[...]},"speed_steps":{"...":[...]}})');
+  public $read = 'Reads device data (login required).';
+  public $read_ex = array('device.read', 'device.read(s1)', 'device.read(s1,latest)', 'device.read(s1,all)', 'device.read(s1,today)', 'device.read(s1,2014)', 'device.read(o1,01-2014)', 'device.read(hm1,01-01-2014)', 'device.read(s2,02-2014,1y)', 'device.read(ss1,2013,2014)');
+  public $thumbnail = 'Renders a PNG thumbnail showing device data (login required).';
+  public $thumbnail_ex = array('device.thumbnail(s1)', 'device.thumbnail(s1,970)', 'device.thumbnail(s1,640,480)', 'device.thumbnail(s1,640,480,ff0000)', 'device.thumbnail(s1,,,f00)');
+  
   function __before() {
     ApiHelper::authenticate();
   }
@@ -100,23 +107,23 @@ class DeviceApi {
     $start = new Date($start);
     
     if ($end === null) {
-      if ($start_length == 4) // fetch_data(s1,2014)
+      if ($start_length == 4) // device.read(s1,2014)
         $end = $start->add('+1 year');
-      else if ($start_length == 7) // fetch_data(o1,01-2014)
+      else if ($start_length == 7) // device.read(o1,01-2014)
         $end = $start->add('+1 month');
-      else if ($start_length == 10) // fetch_data(hm1,01-01-2014)
+      else if ($start_length == 10) // device.read(hm1,01-01-2014)
         $end = $start->add('+1 day');
     } else {
-      if (strstr($end, 'y')) // fetch_data(s2,02-2014,1y)
+      if (strstr($end, 'y')) // device.read(s2,02-2014,1y)
         $end = $start->add_relative('year', $end);
-      else if (strstr($end, 'm')) // fetch_data(s2,10-02-2014,1m)
+      else if (strstr($end, 'm')) // device.read(s2,10-02-2014,1m)
         $end = $start->add_relative('month', $end);
-      else if (strstr($end, 'w')) // fetch_data(o2,01-01-2014,1w)
+      else if (strstr($end, 'w')) // device.read(o2,01-01-2014,1w)
         $end = $start->add_relative('week', $end);
-      else if (strstr($end, 'd')) // fetch_data(o2,01-01-2014,1d)
+      else if (strstr($end, 'd')) // device.read(o2,01-01-2014,1d)
         $end = $start->add_relative('day', $end);
       else
-        $end = (new Date($end))->expand(); // fetch_data(ss1,2013,2014)
+        $end = (new Date($end))->expand(); // device.read(ss1,2013,2014)
     }
     
     if ($start->past(new Date($end)))
