@@ -91,4 +91,6 @@ SpeedStep::detect_order($data);
 
 Notifier::notify();
 
+session_name('auth');
+
 ?>

@@ -30,7 +30,7 @@ class AuthApi {
         $_SESSION['logged_in'] = true;
         $_SESSION['username'] = $result[0]['username'];
         $_SESSION['role'] = $result[0]['role'];
-        return "logged in as '$_SESSION[username]'";
+        return session_id();
       } else
         throw new Exception('login incorrect');
     }

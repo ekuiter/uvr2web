@@ -24,11 +24,14 @@ class Api {
   
   function __construct() {
     try {
+      ini_set('session.use_only_cookies', 0);
       session_start();
-      $this->parse($_SERVER['QUERY_STRING']);
+      header('Access-Control-Allow-Origin: *');
+      $this->parse(isset($_GET['call']) ? $_GET['call'] : $_SERVER['QUERY_STRING']);
       $result = $this->call();
       $this->render($result);
     } catch (Exception $e) {
+      http_response_code(400);
       $this->render(array(
         'space' => $this->space,
         'func' => $this->func,
