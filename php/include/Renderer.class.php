@@ -143,7 +143,7 @@ class Renderer {
    */
   private function get_meta_nav() {
     $this->add_link_extern(Loc::t('about'), 'http://elias-kuiter.de/projects/uvr2web/');
-    $this->add_link_extern(Loc::t('docs'), 'http://uvr2web.elias-kuiter.de/docs/');
+    $this->add_link_extern(Loc::t('docs'), 'http://ekuiter.github.io/uvr2web/');
   }
 
   /**
