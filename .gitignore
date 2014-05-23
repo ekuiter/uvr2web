@@ -1,2 +1,4 @@
 .DS_Store
-src/arduino/myconf.txt
+arduino/myconf.txt
+meta/documentation/
+meta/documentation-cache/
