@@ -12,7 +12,7 @@ uvr2web features at a glance:
 - heating data upload via Arduino
 - processing and visualization:
   - several live overview pages with mini graphs
-  - big interactive graphs, printable and downloadable (based on [HighStock](http://www.highcharts.com/stock/demo/)
+  - big interactive graphs, printable and downloadable (based on [HighStock](http://www.highcharts.com/stock/demo/))
 - processes four kinds of measuring devices:
   - sensors (temperatures, volume flows, ...)
   - outputs (solar system powered on?, oil heating powered on?)

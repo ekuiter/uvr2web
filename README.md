@@ -12,7 +12,7 @@ Die Features von uvr2web im Überblick:
 - Upload von Heizungsdaten per Arduino
 - Auswertung und Visualisierung dieser Daten durch:
   - mehrere Live-Übersichtsseiten mit Mini-Graphen
-  - große interaktive Graphen mit Druck- und Downloadfunktionen (basiert auf [HighStock](http://www.highcharts.com/stock/demo/)
+  - große interaktive Graphen mit Druck- und Downloadfunktionen (basiert auf [HighStock](http://www.highcharts.com/stock/demo/))
 - verarbeitet 4 Arten von Messgeräten:
   - Sensoren (Temperaturen, Volumenströme, u.a.)
   - Ausgänge (Solaranlage angeschaltet?, Ölheizung angeschaltet?)
