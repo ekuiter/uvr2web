@@ -45,7 +45,7 @@ class Api {
     $func = @explode('(', $string)[0];
     $space = @explode('.', $func)[0];
     $func = @explode('.', $func)[1];
-    if (!$space && !$func)
+    if ((!$space && !$func) || $string == 'overview')
       $this->render($this->api_functions_overview()) or die();
     if (!$space || !$func)
       throw new Exception('namespace and function required');
