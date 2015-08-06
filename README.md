@@ -97,3 +97,6 @@ Die Dokumentation der PHP-App findest du [hier](http://ekuiter.github.io/uvr2web
 ## Mehr erfahren
 
 Im `meta`-Ordner findest du unter anderem Datenblätter zur Ansteuerung der UVR1611 (diese stammen direkt von [TA](http://www.ta.co.at)). Dort gibt es Infos zum CAN- und DL-Bus und das Handbuch der Regelung. Für Arduino-Bastler ist insbesondere die (auch hier genutzte) [DL-Schnittstelle](meta/Schnittstelle%20Datenleitung%201.6.pdf) interessant, da diese relativ einfach und günstig anzusteuern ist.
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ekuiter/uvr2web/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
