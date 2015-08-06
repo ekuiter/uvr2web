@@ -49,13 +49,16 @@ class DeviceApi {
   }
   
   private function get_structure($class) {
-    $i = 1;
+    $i = 0;
     $structure = array();
     foreach ($class::get_order() as $group) {
       $devices = array();
       foreach ($group as $device)
         $devices[] = array('id' => $device, 'alias' => (new $class($device))->get_alias());
-      $structure[(new Separator($i, $this->to_underscore($class)))->get_alias()] = $devices;
+      $structure[$i] = array(
+        "separator" => (new Separator($i + 1, $this->to_underscore($class)))->get_alias(),
+        "devices" => $devices
+      );
       $i++;
     }
     return $structure;
