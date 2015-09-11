@@ -1,11 +1,14 @@
-(There is also an [English translation](README.en.md).)
-
 #uvr2web
-
-**Weitere Informationen über uvr2web auf [meiner Website](http://elias-kuiter.de/projects/uvr2web/).**
 
 uvr2web ist ein Programm zur Überwachung deiner UVR1611-Heizungsregelung.
 Es kann Temperaturdaten visualisieren, diese auf deinem PC oder Smartphone darstellen und vieles mehr.
+
+**uvr2web funktioniert nur mit der Regelung UVR1611 von [Technische Alternative](http://ta.co.at). Die Datenübertragung erfolgt über den DL-Bus (Datenleitung, Ausgang 14).**
+
+**Für andere Regelungen gibt es folgende Alternativen:**
+
+- **für die UVR31: [martinkropf/UVR31_RF24](https://github.com/martinkropf/UVR31_RF24)**
+- **ebenfalls für die UVR1611, allerdings über BL-NET: [berwinter/uvr1611](https://github.com/berwinter/uvr1611)**
 
 Die Features von uvr2web im Überblick:
 
@@ -32,7 +35,7 @@ Die Features von uvr2web im Überblick:
   - Backup aller Einstellungen und Datensätze von uvr2web
   - Installations- und Deinstallationsassistenten
 
-uvr2web funktioniert nur mit der UVR1611, Unterstützung für andere Regelungen ist nicht geplant.
+uvr2web funktioniert nur mit der UVR1611, Unterstützung für andere Regelungen siehe oben.
 Das Programm besteht aus zwei Teilen:
 
 **Arduino-Sketch**
@@ -97,6 +100,4 @@ Die Dokumentation der PHP-App findest du [hier](http://ekuiter.github.io/uvr2web
 ## Mehr erfahren
 
 Im `meta`-Ordner findest du unter anderem Datenblätter zur Ansteuerung der UVR1611 (diese stammen direkt von [TA](http://www.ta.co.at)). Dort gibt es Infos zum CAN- und DL-Bus und das Handbuch der Regelung. Für Arduino-Bastler ist insbesondere die (auch hier genutzte) [DL-Schnittstelle](meta/Schnittstelle%20Datenleitung%201.6.pdf) interessant, da diese relativ einfach und günstig anzusteuern ist.
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ekuiter/uvr2web/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
