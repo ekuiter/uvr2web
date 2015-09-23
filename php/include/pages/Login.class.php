@@ -39,6 +39,14 @@ class Login {
     $field = stristr($_SERVER['HTTP_USER_AGENT'], 'Android') ? 'text' : 'password';
     $nav = Renderer::$nav;
     $login = Loc::t('log in');
+    if ($GLOBALS['meta'])
+      $meta = <<<code
+      <div style="text-align: center; margin-top: 30px">
+        <strong>oder: <a href="$_SERVER[PHP_SELF]?demo">Als Demo-Benutzer anmelden</a></strong>
+      </div>
+code;
+    else
+      $meta = '';
     echo <<<code
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -85,6 +93,7 @@ class Login {
         <div class="clear"></div>
         </div>
       </form>
+      $meta
       </div>
     </div>
     </body>
