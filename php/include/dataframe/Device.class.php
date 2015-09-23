@@ -236,7 +236,10 @@ code;
       $timestamp['l'] = 'month';
       $months[] = Loc::l($timestamp);
     }
-    $months[] = Loc::t('all');
+    if ($_SESSION['username'] != 'demo')
+      $months[] = Loc::t('all');
+    else
+      $months[] = "";
     return array_reverse($months);
   }
 
@@ -269,7 +272,7 @@ code;
     if ($month == 1)
       $chart->chart->events->load = new HighchartJsExpr($expr);
     $chart->series[0] = array('name' => $this->get_alias(), 'data' => $this->data);
-    if ($month == 'all') {
+    if ($month == 'all' && $_SESSION['username'] != 'demo') {
       $select = "0, {type: 'all'}";
       $chart->rangeSelector->buttons = array(
         array('type' => 'all', 'text' => Loc::t('all'))
@@ -314,7 +317,7 @@ code;
    * Fetches all device data from the database
   */
   private function fetch_data($month = 1) {
-    if ($month == 'all')
+    if ($month == 'all' && $_SESSION['username'] != 'demo')
       $result = DB::query('SELECT * FROM uvr2web_data');
     else {
       if (!is_numeric($month) || $month < 1) $month = 1;
@@ -326,7 +329,7 @@ code;
   }
   
   public function fetch_data_api($start, $end = null) {
-    if ($start == 'all')
+    if ($start == 'all' && $_SESSION['username'] != 'demo')
       $result = DB::query('SELECT * FROM uvr2web_data');
     else
       $result = DB::query("SELECT * FROM uvr2web_data

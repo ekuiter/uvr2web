@@ -28,6 +28,10 @@ class Api {
       if (isset($_GET['auth']))
         session_id($_GET['auth']);
       session_start();
+      if ($_SESSION['username'] == 'demo') {
+        http_response_code(401);
+        die("API is deactivated in demo mode");
+      }
       $this->parse(isset($_GET['call']) ? $_GET['call'] : $_SERVER['QUERY_STRING']);
       $result = $this->call();
       $this->render($result);
