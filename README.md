@@ -3,6 +3,8 @@
 uvr2web ist ein Programm zur Überwachung deiner UVR1611-Heizungsregelung.
 Es kann Temperaturdaten visualisieren, diese auf deinem PC oder Smartphone darstellen und vieles mehr.
 
+**Hier kannst du uvr2web online ausprobieren: http://uvr2web.elias-kuiter.de/?demo. Die Administrator-Funktionen und die API sind beim Demo-Zugang abgeschaltet.**
+
 **uvr2web funktioniert nur mit der Regelung UVR1611 von [Technische Alternative](http://ta.co.at). Die Datenübertragung erfolgt über den DL-Bus (Datenleitung, Ausgang 14).**
 
 **Für andere Regelungen gibt es folgende Alternativen:**
