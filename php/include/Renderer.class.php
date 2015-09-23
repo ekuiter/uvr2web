@@ -48,9 +48,11 @@ class Renderer {
     session_start();
     if (isset($_POST['username']) && isset($_POST['password']))
       $this->log_in();
+    else if ($GLOBALS['meta'] && $_SERVER['QUERY_STRING'] == 'demo')
+      $this->log_in_guest();
     $this->get_page();
     if ($this->page == 'Login') {
-      if ($GLOBALS['meta_nav'])
+      if ($GLOBALS['meta'])
         $this->get_meta_nav();
       $this->body();
     } else if (isset($_GET['live']) && method_exists($this->obj, 'live')) {
@@ -61,7 +63,7 @@ class Renderer {
         $this->body();
       } else {
       $this->get_nav();
-      if ($GLOBALS['meta_nav'])
+      if ($GLOBALS['meta'])
         $this->get_meta_nav();
       $this->show_page();
       $this->header();
@@ -84,6 +86,16 @@ class Renderer {
       require_once dirname(__FILE__).'/pages/Login.class.php';
       Login::$fail = true;
     }
+  }
+  
+  /**
+   * Login as guest
+   */
+  private function log_in_guest() {
+    $_SESSION['logged_in'] = true;
+    $_SESSION['username'] = 'demo';
+    $_SESSION['role'] = 'user';
+    header('Location: ' . dirname($_SERVER["PHP_SELF"]));
   }
 
   /**
@@ -142,7 +154,7 @@ class Renderer {
    * Gets an additional meta navigation
    */
   private function get_meta_nav() {
-    $this->add_link_extern(Loc::t('about'), 'http://elias-kuiter.de/projects/uvr2web/');
+    $this->add_link_extern(Loc::t('about'), 'http://elias-kuiter.de/apps/uvr2web');
     $this->add_link_extern(Loc::t('docs'), 'http://ekuiter.github.io/uvr2web/');
   }
 
@@ -164,7 +176,7 @@ class Renderer {
    * @param string $options
    */
   private function add_link_extern($title, $url, $options = '') {
-    self::$nav .= "<li$options><a href=\"$url\">$title</a></li>";
+    self::$nav .= "<li$options><a href=\"$url\" target=\"_blank\">$title</a></li>";
   }
 
   /**

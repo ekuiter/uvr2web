@@ -18,7 +18,8 @@ $mode = 'production';
 // if in debug mode this host is allowed to issue AJAX requests
 $ajax_allowed = 'http://localhost:3333';
 
-// remove the comment for links to documentation and information on uvr2web
+// remove the comment for links to documentation and information on uvr2web.
+// Note that this ALSO enables demo mode! (http://your-server.de/uvr2web/?demo)
 //$mode .= ' meta';
 
 // adjust if you are in another timezone, see http://www.php.net/manual/de/timezones.php
@@ -34,9 +35,9 @@ if (stristr($mode, 'debug')) {
 } if (stristr($mode, 'production'))
   error_reporting(0);
 if (stristr($mode, 'meta'))
-  $GLOBALS['meta_nav'] = true;
+  $GLOBALS['meta'] = true;
 else
-  $GLOBALS['meta_nav'] = false;
+  $GLOBALS['meta'] = false;
 
 require_once dirname(__FILE__).'/Config.class.php';
 require_once dirname(__FILE__).'/Loc.class.php';
