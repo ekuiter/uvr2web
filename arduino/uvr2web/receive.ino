@@ -55,7 +55,7 @@ namespace Receive {
     else
       Process::data_bits[BIT_COUNT / 8] &= ~(1 << BIT_COUNT % 8); // Bit löschen // clear bit
 
-    if (BIT_COUNT == 1312)
+    if (BIT_COUNT == Process::bit_number)
     // beende Übertragung, wenn Datenrahmen vollständig
       stop(); // stop receiving when data frame is complete
   }
