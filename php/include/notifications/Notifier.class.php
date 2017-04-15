@@ -9,6 +9,7 @@
 require_once dirname(__FILE__).'/Notification.class.php';
 require_once dirname(__FILE__).'/NoUploadNotification.class.php';
 require_once dirname(__FILE__).'/BackupNotification.class.php';
+require_once dirname(__FILE__).'/TriggerNotification.class.php';
 
 /**
  * Notifier
@@ -26,7 +27,7 @@ class Notifier {
    * Notifier sends notifications to this email addresses. Multiple emails are separated by comma.
    */
   private static $emails;
-  private static $notifications = array('NoUploadNotification', 'BackupNotification');
+  private static $notifications = array('NoUploadNotification', 'BackupNotification', 'TriggerNotification');
 
   /**
    * Fetches all email addresses from the database

@@ -1,15 +1,15 @@
 <?php
 
 /**
- * Contains NoUploadNotification class
+ * Contains BackupNotification class
  *
  * @package Notifications
  */
 
 /**
- * No upload notification
+ * Backup notification
  *
- * Notification for upload issues.
+ * Reminds of backups in a given interval.
  *
  * @package Notifications
  */

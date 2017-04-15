@@ -46,6 +46,16 @@ class Notifications {
     $backup_notification = new BackupNotification();
     $backup_checked = $backup_notification->get_enabled() ? 'checked' : '';
     $backup_time = $backup_notification->get_time();
+    $trigger_notification = new TriggerNotification();
+    $trigger_checked = $trigger_notification->get_enabled() ? 'checked' : '';
+    $trigger_time = $trigger_notification->get_time();
+    $trigger_time_from = $trigger_time[0];
+    $trigger_time_to = $trigger_time[1];
+    $trigger_sensor = $trigger_notification->get_sensor();
+    $trigger_mode = $trigger_notification->get_mode();
+    $below_selected = $trigger_mode === "below" ? "selected" : "";
+    $above_selected = $trigger_mode === "above" ? "selected" : "";
+    $trigger_bound = $trigger_notification->get_bound();
     echo <<<code
     <p style="margin-bottom:30px">$notifications_body</p>
     <form method="post" action="?p=admin&sub=notifications" class="form-horizontal">
@@ -57,7 +67,7 @@ class Notifications {
         </div>
         <div class="control-group">
           <div class="controls">
-            <input style="margin:-3px 3px 0 0" type="checkbox" name="no_upload" id="no_upload" value="no_upload" $no_upload_checked />
+						      <input style="margin:-3px 3px 0 0" type="checkbox" name="no_upload" id="no_upload" value="no_upload" $no_upload_checked />
             <label style="display:inline" for="no_upload">$notifications_body_2 <input style="width:40px;margin:0 5px 0 5px" type="text" name="no_upload_time" id="no_upload_time" value="$no_upload_time" /> $notifications_body_3</label>
           </div>
         </div>
@@ -65,6 +75,19 @@ class Notifications {
           <div class="controls">
             <input style="margin:-3px 3px 0 0" type="checkbox" name="backup" id="backup" value="backup" $backup_checked />
             <label style="display:inline" for="backup">$notifications_body_4 <input style="width:40px;margin:0 5px 0 5px" type="text" name="backup_time" id="backup_time" value="$backup_time" /> $notifications_body_5</label>
+          </div>
+        </div>
+	<div class="control-group">
+          <div class="controls">
+            <input style="margin:-3px 3px 0 0" type="checkbox" name="trigger" id="trigger" value="trigger" $trigger_checked />
+		<label style="display:inline" for="trigger">
+		From <input style="width:40px;margin:0 5px 0 5px" type="text" name="trigger_time_from" id="trigger_time_from" value="$trigger_time_from" />
+		  to <input style="width:40px;margin:0 5px 0 5px" type="text" name="trigger_time_to" id="trigger_time_to" value="$trigger_time_to" /> o'clock,
+		  notify me when the sensor
+		  <input style="width:40px;margin:0 5px 0 5px" type="text" name="trigger_sensor" id="trigger_sensor" value="$trigger_sensor" />
+		  is <select style="width:80px;margin:0 5px 0 5px" type="text" name="trigger_mode" id="trigger_mode">
+                  <option value="below" $below_selected>below</option><option value="above" $above_selected>above</option></select>
+		  the value <input style="width:40px;margin:0 5px 0 5px" type="text" name="trigger_bound" id="trigger_bound" value="$trigger_bound" />.</label>
           </div>
         </div>
         <div class="control-group">
@@ -99,6 +122,20 @@ code;
     $backup_notification->set_enabled($enabled);
     if (isset($_POST['backup_time']))
       $backup_notification->set_time($_POST['backup_time']);
+    $trigger_notification = new TriggerNotification();
+    if (isset($_POST['trigger']))
+      $enabled = true;
+    else
+      $enabled = false;
+    $trigger_notification->set_enabled($enabled);
+    if (isset($_POST['trigger_time_from']) && isset($_POST['trigger_time_to']))
+      $trigger_notification->set_time(array((int) $_POST['trigger_time_from'], (int) $_POST['trigger_time_to']));
+    if (isset($_POST['trigger_sensor']))
+      $trigger_notification->set_sensor($_POST['trigger_sensor']);
+    if (isset($_POST['trigger_mode']))
+      $trigger_notification->set_mode($_POST['trigger_mode']);
+    if (isset($_POST['trigger_bound']))
+      $trigger_notification->set_bound($_POST['trigger_bound']);
   }
 
 }
