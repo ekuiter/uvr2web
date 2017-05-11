@@ -1,16 +1,24 @@
-#uvr2web
+# uvr2web
 
-uvr2web ist ein Programm zur Überwachung deiner UVR1611-Heizungsregelung.
+![uvr2web](https://raw.githubusercontent.com/ekuiter/uvr2web/img/uvr2web-example.png)
+
+**uvr2web ist ein Programm zur Überwachung deiner UVR1611-Heizungsregelung.**
 Es kann Temperaturdaten visualisieren, diese auf deinem PC oder Smartphone darstellen und vieles mehr.
 
-**Hier kannst du uvr2web online ausprobieren: http://uvr2web.elias-kuiter.de/?demo. Die Administrator-Funktionen und die API sind beim Demo-Zugang abgeschaltet.**
+Die wichtigsten Infos auf einen Blick:
 
-**uvr2web funktioniert nur mit der Regelung UVR1611 von [Technische Alternative](http://ta.co.at). Die Datenübertragung erfolgt über den DL-Bus (Datenleitung, Ausgang 14).**
+- **[online ausprobieren](http://uvr2web.elias-kuiter.de/?demo)** (keine Administrator-Funktionen und API)
+- **[als ZIP herunterladen](https://github.com/ekuiter/uvr2web/archive/master.zip)**
+- uvr2web funktioniert **nur mit der Regelung UVR1611** von [Technische Alternative](http://ta.co.at).
+   Die Datenübertragung erfolgt über den DL-Bus (Datenleitung, Ausgang 14).
+- Für andere Regelungen gibt es folgende Alternativen / Anregungen:
+   - **UVR31**: [martinkropf/UVR31_RF24](https://github.com/martinkropf/UVR31_RF24)
+   - **UVR1611 mit BL-NET**: [berwinter/uvr1611](https://github.com/berwinter/uvr1611)
+   - **UVR1611 mit ESP8266/MQTT**: [Buster01/UVR2MQTT](https://github.com/Buster01/UVR2MQTT)
+   - **UVR61-3 mit ESP8266**: [Instructable: Monitoring Gebäudetrocknung](http://www.instructables.com/id/Monitoring-Geb%C3%A4udetrocknung/)
+   - *Falls du eine eigene Ansteuerung für eine TA-Regelung entworfen hast (gern auch auf Basis meines Codes), [schreib mich an](mailto:info@elias-kuiter.de) und ich füge sie zu dieser Liste hinzu!*
 
-**Für andere Regelungen gibt es folgende Alternativen:**
-
-- **für die UVR31: [martinkropf/UVR31_RF24](https://github.com/martinkropf/UVR31_RF24)**
-- **ebenfalls für die UVR1611, allerdings über BL-NET: [berwinter/uvr1611](https://github.com/berwinter/uvr1611)**
+## Features
 
 Die Features von uvr2web im Überblick:
 
@@ -42,7 +50,7 @@ Das Programm besteht aus zwei Teilen:
 
 **Arduino-Sketch**
 
-Der Arduino-Sketch kommuniziert mit der UVR1611. Dafür brauchst du natürlich ein Arduino-Board. Am besten funktioniert das Arduino Leonardo. Das Arduino Uno ist auch möglich, allerdings fehlerträchtiger beim Datenempfang.
+Der Arduino-Sketch kommuniziert mit der UVR1611. Dafür brauchst du natürlich ein Arduino-Board. Getestet wurde mit dem Arduino Leonardo und Uno.
 Andere Boards wurden nicht getestet, sind aber prinzipiell möglich.
 Außerdem musst du ein einfaches Arduino-Shield löten, einen Spannungsteiler (s. unten).
 Die UVR1611 gibt ihre Daten mittels eines Manchester-Codes aus. Der Sketch dekodiert dieses Signal und schickt die Daten dann entweder an einen PC über eine serielle Verbindung oder über Ethernet an die uvr2web PHP-App.
@@ -101,5 +109,5 @@ Die Dokumentation der PHP-App findest du [hier](http://ekuiter.github.io/uvr2web
 
 ## Mehr erfahren
 
-Im `meta`-Ordner findest du unter anderem Datenblätter zur Ansteuerung der UVR1611 (diese stammen direkt von [TA](http://www.ta.co.at)). Dort gibt es Infos zum CAN- und DL-Bus und das Handbuch der Regelung. Für Arduino-Bastler ist insbesondere die (auch hier genutzte) [DL-Schnittstelle](meta/Schnittstelle%20Datenleitung%201.6.pdf) interessant, da diese relativ einfach und günstig anzusteuern ist.
+Im `meta`-Ordner findest du unter anderem Datenblätter zur Ansteuerung der UVR1611 (diese stammen direkt von [TA](http://www.ta.co.at)). Dort gibt es Infos zum CAN- und DL-Bus und das Handbuch der Regelung. Für Arduino-Bastler ist insbesondere die (auch hier genutzte) [DL-Schnittstelle](meta/Schnittstelle%20Datenleitung%201.7.pdf) interessant, da diese relativ einfach und günstig anzusteuern ist.
 
