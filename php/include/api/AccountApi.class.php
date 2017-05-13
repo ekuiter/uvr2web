@@ -41,7 +41,7 @@ class AccountApi {
     $role = DB::escape($role);
     if ($role != 'user' && $role != 'admin') throw new Exception('invalid role');
     if ($password != $password_confirmation) throw new Exception('passwords don\'t match');  
-    $password = DB::escape(md5($password));
+    $password = DB::escape((new Password($password))->hash());
     
     DB::query("INSERT INTO uvr2web_users (username, password, role) VALUES('$username', '$password', '$role')");
     if (DB::get_rows() > 0)
@@ -70,7 +70,7 @@ class AccountApi {
     $pwstring = '';
     if ($password || $password_confirmation) {
       if ($password == $password_confirmation)
-        $pwstring = ", password='" . DB::escape(md5($password)) . "'";
+        $pwstring = ", password='" . DB::escape((new Password($password))->hash()) . "'";
       else
         throw new Exception('passwords don\'t match');
     }

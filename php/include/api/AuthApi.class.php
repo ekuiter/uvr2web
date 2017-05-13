@@ -26,7 +26,7 @@ class AuthApi {
       return session_id();
     else {
       $result = DB::query('SELECT * FROM uvr2web_users WHERE username="' . DB::escape($username) . '"');
-      if ($result && $result[0]['password'] == md5($password)) {
+      if ($result && (new Password($password))->verify($result[0]['password'])) {
         $_SESSION['logged_in'] = true;
         $_SESSION['username'] = $result[0]['username'];
         $_SESSION['role'] = $result[0]['role'];

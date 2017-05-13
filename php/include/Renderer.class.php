@@ -77,7 +77,7 @@ class Renderer {
    */
   private function log_in() {
     $result = DB::query('SELECT * FROM uvr2web_users WHERE username="' . DB::escape($_POST['username']) . '"');
-    if ($result && $result[0]['password'] == md5($_POST['password'])) {
+    if ($result && (new Password($_POST['password']))->verify($result[0]['password'])) {
       $_SESSION['logged_in'] = true;
       $_SESSION['username'] = $result[0]['username'];
       $_SESSION['role'] = $result[0]['role'];

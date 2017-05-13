@@ -97,7 +97,7 @@ code;
    * Adds a new user
    */
   private function add() {
-    $password = DB::escape(md5($this->generate_password()));
+    $password = DB::escape((new Password($this->generate_password()))->hash());
     DB::query("INSERT INTO uvr2web_users (username, password, role) VALUES('dummy', '$password', 'user')");
     if (DB::get_rows() > 0) {
       $this->add_success(Loc::t('add 1'));
@@ -120,7 +120,7 @@ code;
       $role = $_POST['role'] == 'Admin' ? 'admin' : 'user';
       if ($_POST['change_password'] || $_POST['password_confirmation']) {
         if ($_POST['change_password'] == $_POST['password_confirmation'])
-          $password = ", password='" . DB::escape(md5($_POST['change_password'])) . "'";
+          $password = ", password='" . DB::escape((new Password($_POST['change_password']))->hash()) . "'";
         else
           $this->add_error(Loc::t('passwords dont match'));
       }

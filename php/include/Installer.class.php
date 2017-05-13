@@ -16,6 +16,7 @@
 
 require_once dirname(__FILE__).'/Loc.class.php';
 require_once dirname(__FILE__).'/Config.class.php';
+require_once dirname(__FILE__).'/Password.class.php';
 require_once dirname(__FILE__).'/DB.class.php';
 require_once dirname(__FILE__).'/dataframe/FrameCounter.class.php';
 
@@ -210,7 +211,7 @@ code;
       $username = 'admin';
       $username_2 = '';
       $password = $this->generate_password();
-      DB::query("INSERT INTO uvr2web_users (username, password, role) VALUES('admin', '".DB::escape(md5($password))."', 'admin')");
+      DB::query("INSERT INTO uvr2web_users (username, password, role) VALUES('admin', '".DB::escape((new Password($password))->hash())."', 'admin')");
     }
     echo <<<code
     <h2 style="color:green;margin:10px 0">Installation complete.</h2>

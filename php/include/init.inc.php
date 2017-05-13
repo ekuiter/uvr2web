@@ -40,6 +40,7 @@ else
   $GLOBALS['meta'] = false;
 
 require_once dirname(__FILE__).'/Config.class.php';
+require_once dirname(__FILE__).'/Password.class.php';
 require_once dirname(__FILE__).'/Loc.class.php';
 require_once dirname(__FILE__).'/DB.class.php';
 require_once dirname(__FILE__).'/Renderer.class.php';
