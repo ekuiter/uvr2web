@@ -3,8 +3,10 @@
   margin: 0;
 }
 
-body {
-  padding-top: 60px;
+@media (min-width: 992px) {
+    body {
+	padding-top: 60px;
+    }
 }
 
 div.clear {
