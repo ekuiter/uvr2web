@@ -17,7 +17,8 @@ Die wichtigsten Infos auf einen Blick:
    - **UVR1611 mit BL-NET**: [berwinter/uvr1611](https://github.com/berwinter/uvr1611)
    - **UVR1611 mit ESP8266/MQTT**: [Buster01/UVR2MQTT](https://github.com/Buster01/UVR2MQTT)
    - **UVR61-3 mit ESP8266**: [Instructable: Monitoring Gebäudetrocknung](http://www.instructables.com/id/Monitoring-Geb%C3%A4udetrocknung/)
-   - *Falls du eine eigene Ansteuerung für eine TA-Regelung entworfen hast (gern auch auf Basis meines Codes), [schreib mich an](mailto:info@elias-kuiter.de) und ich füge sie zu dieser Liste hinzu!*
+   - **[C.M.I. Control and Monitoring Interface](https://www.ta.co.at/fernwartung/cmi/)**: die offizielle TA-Lösung mit vollem Funktionsumfang
+   - *Falls du eine eigene Ansteuerung für eine TA-Regelung entworfen hast, [schreib mich an](mailto:info@elias-kuiter.de) und ich füge sie zu dieser Liste hinzu!*
 
 ## Features
 
@@ -66,6 +67,8 @@ Die PHP-App benötigt eine MySQL-Datenbank und die GD-Library. Sie empfängt die
 
 Nachdem du uvr2web heruntergeladen hast, befindet sich im Ordner `arduino/uvr2web` der Arduino-Sketch und in `php` die Serversoftware.
 Zunächst musst du einen Spannungsteiler löten, der die 12V-Spannung der UVR1611 auf eine 5V-Spannung reduziert. Wenn du dabei Hilfe brauchst, [kontaktiere mich](mailto:info@elias-kuiter.de). (Ich habe [hier](meta/voltage-divider.jpg) ein einfaches Schaltbild gezeichnet, wie dieser Spannungsteiler aussieht.)
+
+(Lies gegebenenfalls die [Hinweise von TA zum DL-Bus](http://help.ta.co.at/DE/CMIHELP/dl_bus.htm) - diese beziehen sich auf das C.M.I., sind aber auch für uvr2web anwendbar.)
 
 **Arduino**
 
