@@ -12,13 +12,15 @@ Die wichtigsten Infos auf einen Blick:
 - **[als ZIP herunterladen](https://github.com/ekuiter/uvr2web/archive/master.zip)**
 - uvr2web funktioniert **nur mit der Regelung UVR1611** von [Technische Alternative](http://ta.co.at).
    Die Datenübertragung erfolgt über den DL-Bus (Datenleitung, Ausgang 14).
+- **[Troubleshooting & Feedback](http://www.elias-kuiter.de/apps/uvr2web/troubleshooting)**
 - Für andere Regelungen gibt es folgende Alternativen / Anregungen:
    - **UVR31**: [martinkropf/UVR31_RF24](https://github.com/martinkropf/UVR31_RF24)
    - **UVR1611 mit BL-NET**: [berwinter/uvr1611](https://github.com/berwinter/uvr1611)
    - **UVR1611 mit ESP8266/MQTT**: [Buster01/UVR2MQTT](https://github.com/Buster01/UVR2MQTT)
    - **UVR61-3 mit ESP8266**: [Instructable: Monitoring Gebäudetrocknung](http://www.instructables.com/id/Monitoring-Geb%C3%A4udetrocknung/)
+   - **UVR16x2**: Da diese Regelung sich als UVR1611 "tarnt", kannst du uvr2web auch mit der UVR16x2 verwenden!
    - **[C.M.I. Control and Monitoring Interface](https://www.ta.co.at/fernwartung/cmi/)**: die offizielle TA-Lösung mit vollem Funktionsumfang
-   - *Falls du eine eigene Ansteuerung für eine TA-Regelung entworfen hast, [schreib mich an](mailto:info@elias-kuiter.de) und ich füge sie zu dieser Liste hinzu!*
+   - *Falls du eine eigene Ansteuerung für eine TA-Regelung entworfen hast, [schreib mich an](http://www.elias-kuiter.de/apps/uvr2web/troubleshooting) und ich füge sie zu dieser Liste hinzu!*
 
 ## Features
 
@@ -55,7 +57,7 @@ Das Programm besteht aus zwei Teilen:
 Der Arduino-Sketch kommuniziert mit der UVR1611. Dafür brauchst du natürlich ein Arduino-Board. Getestet wurde mit dem Arduino Leonardo und Uno.
 Andere Boards wurden nicht getestet, sind aber prinzipiell möglich.
 Außerdem musst du ein einfaches Arduino-Shield löten, einen Spannungsteiler (s. unten).
-Die UVR1611 gibt ihre Daten mittels eines Manchester-Codes aus. Der Sketch dekodiert dieses Signal und schickt die Daten dann entweder an einen PC über eine serielle Verbindung oder über Ethernet an die uvr2web PHP-App.
+Die UVR1611 gibt ihre Daten mittels eines Manchester-Codes aus. Der Sketch dekodiert dieses Signal und schickt die Daten dann entweder an einen PC über eine serielle Verbindung oder über Ethernet an die uvr2web PHP-App. Die Web-Anbindung benötigt ein Ethernet-Shield.
 
 **PHP-App**
 
@@ -66,7 +68,7 @@ Die PHP-App benötigt eine MySQL-Datenbank und die GD-Library. Sie empfängt die
 **Verbindung zur UVR1611**
 
 Nachdem du uvr2web heruntergeladen hast, befindet sich im Ordner `arduino/uvr2web` der Arduino-Sketch und in `php` die Serversoftware.
-Zunächst musst du einen Spannungsteiler löten, der die 12V-Spannung der UVR1611 auf eine 5V-Spannung reduziert. Wenn du dabei Hilfe brauchst, [kontaktiere mich](mailto:info@elias-kuiter.de). (Ich habe [hier](meta/voltage-divider.jpg) ein einfaches Schaltbild gezeichnet, wie dieser Spannungsteiler aussieht.)
+Zunächst musst du einen Spannungsteiler löten, der die 12V-Spannung der UVR1611 auf eine 5V-Spannung reduziert. Wenn du dabei Hilfe brauchst, [kontaktiere mich](http://www.elias-kuiter.de/apps/uvr2web/troubleshooting). (Ich habe [hier](meta/voltage-divider.jpg) ein einfaches Schaltbild gezeichnet, wie dieser Spannungsteiler aussieht.)
 
 (Lies gegebenenfalls die [Hinweise von TA zum DL-Bus](http://help.ta.co.at/DE/CMIHELP/dl_bus.htm) - diese beziehen sich auf das C.M.I., sind aber auch für uvr2web anwendbar.)
 
@@ -96,7 +98,7 @@ erhältst, sehr gut! (Dass ein `Data frame damaged` ist, kann schon einmal vorko
 Wenn du die Meldung `DHCP failed. Program abort.` erhältst, überprüfe deine MAC-Adresse und ob dein Board korrekt mit dem Internet verbunden ist.
 
 Falls der Datenempfang von der UVR1611 scheitert (z.B. `Receiving ...` und dann passiert nichts weiter), probiere einmal den Debug-Sketch aus.
-Dieser ist unter `arduino/uvr2web_debug` zu finden. Gib hier noch einmal den `dataPin` und den `interrupt` an (siehe [AttachInterrupt](http://arduino.cc/en/Reference/AttachInterrupt)). Wenn auch dieser Sketch scheitert (keine Nullen-Einsen-Folge ausgibt), ist deine UVR1611 nicht richtig mit dem Arduino verbunden. [Melde dich](mailto:info@elias-kuiter.de) und ich werde versuchen, dir zu helfen.
+Dieser ist unter `arduino/uvr2web_debug` zu finden. Gib hier noch einmal den `dataPin` und den `interrupt` an (siehe [AttachInterrupt](http://arduino.cc/en/Reference/AttachInterrupt)). Wenn auch dieser Sketch scheitert (keine Nullen-Einsen-Folge ausgibt), ist deine UVR1611 nicht richtig mit dem Arduino verbunden. [Melde dich](http://www.elias-kuiter.de/apps/uvr2web/troubleshooting) und ich werde versuchen, dir zu helfen.
 
 **PHP**
 
