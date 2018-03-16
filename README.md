@@ -18,7 +18,6 @@ Die wichtigsten Infos auf einen Blick:
    - **UVR1611 mit BL-NET**: [berwinter/uvr1611](https://github.com/berwinter/uvr1611)
    - **UVR1611 mit ESP8266/MQTT**: [Buster01/UVR2MQTT](https://github.com/Buster01/UVR2MQTT)
    - **UVR61-3 mit ESP8266**: [Instructable: Monitoring Gebäudetrocknung](http://www.instructables.com/id/Monitoring-Geb%C3%A4udetrocknung/)
-   - **UVR16x2**: Da diese Regelung sich als UVR1611 "tarnt", kannst du uvr2web auch mit der UVR16x2 verwenden!
    - **[C.M.I. Control and Monitoring Interface](https://www.ta.co.at/fernwartung/cmi/)**: die offizielle TA-Lösung mit vollem Funktionsumfang
    - *Falls du eine eigene Ansteuerung für eine TA-Regelung entworfen hast, [schreib mich an](http://www.elias-kuiter.de/apps/uvr2web/troubleshooting) und ich füge sie zu dieser Liste hinzu!*
 
