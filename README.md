@@ -1,12 +1,12 @@
-##uvr2web Ember.js app
+## uvr2web Ember.js app
 
-*Note*: This was an experiment back in 2014, when I wanted to provide a more
+**Note**: This was an experiment back in 2014, when I wanted to provide a more
 modern and interactive frontend for uvr2web. As of now, no further work on this
 is planned.
 
-###Installation
+### Installation
 
-####Preparations
+#### Preparations
 
 - `npm install` - installs *bower*, *brunch* and the brunch node modules specified in `package.json`
   (this will create the `node_modules` directory and install the *bower* and *brunch* commands)
@@ -14,7 +14,7 @@ is planned.
 - `bower install` - installs the components specified in `bower.json`
   (this will create the `bower_components` directory)
 
-####Adjustments
+#### Adjustments
 
 Make the following changes, otherwise *brunch* will complain:
 
@@ -39,15 +39,15 @@ Now to set up the API connection
 - in your API's `init.inc.php` enable the `debug` flag and set the `$ajax_allowed` variable (typically `http://localhost:3333`)
 - don't forget to publish your changes
 
-####Run
+#### Run
 
 `brunch watch --server` or `brunch w -s` to start a server on `localhost:3333` (local file changes are observed)
 
-####Build
+#### Build
 
 - `brunch build` or `brunch b` builds the app in the `dev_build` directory (including `env/config.dev.coffee` and not optimizing JS and CSS)
 - `brunch build --production` or `brunch b --production` builds the app directly in the `../server` directory, ready to commit the changes to Git (including `env/config.prod.coffee` and JS/CSS optimization)
 
-###Updating
+### Updating
 - `npm update`
 - `bower update` - make sure to repeat the `.bower.json` adjustments above if necessary!
