@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="small-2 columns">
+    {{#if isEditing}}
+      <ul class="side-nav">
+        {{#each}}
+          {{input value=alias class="small"}}
+        {{/each}}
+      </ul>
+      <a class="button tiny" {{action "save" on="click"}}>{{t "save"}}</a>
+    {{else}}
+      <ul class="side-nav">
+        {{#each}}
+          <li>{{#link-to "device" id}}{{alias}}{{/link-to}}</li>
+        {{/each}}
+      </ul>
+      <a class="button tiny secondary" {{action "edit" on="click"}}>{{t "edit"}}</a>
+    {{/if}}
+  </div>
+  <div class="small-10 columns">
+    {{outlet}}
+  </div>
+</div>

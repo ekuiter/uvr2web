@@ -1,0 +1,33 @@
+<form {{action "login" on="submit"}}>
+  <div class="row">
+    <div class="large-3 columns">&nbsp;</div>
+    <div class="large-6 columns">
+      <h2>{{t "login"}}</h2>
+      {{#if model.message}}
+        <div class="alert-box">
+          {{model.message}}
+        </div>
+      {{/if}}
+      <div class="row collapse">
+        <div class="small-3 large-4 columns">
+          <label for="username" class="prefix">{{t "username"}}</label>
+        </div>
+        <div class="small-9 large-8 columns">
+          {{input value=App.api.username type="text" id="username"}}
+        </div>
+      </div>
+      <div class="row collapse">
+        <div class="small-3 large-4 columns">
+          <label for="password" class="prefix">{{t "password"}}</label>
+        </div>
+        <div class="small-9 large-8 columns">
+          {{input value=App.api.password type="password" id="password"}}
+        </div>
+      </div>
+      <div class="row collapse">
+        <button type="submit" class="right">{{t "login"}}</button>
+      </div>
+    </div>
+    <div class="large-3 columns">&nbsp;</div>
+  </div>
+</form>

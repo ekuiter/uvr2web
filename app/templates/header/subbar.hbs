@@ -1,0 +1,9 @@
+<div class="left favorites">
+  <dl class="sub-nav">
+    <dd>&nbsp;</dd>
+    {{#each device in favorites}}
+      <dd>{{#link-to "device" device.id}}{{device.alias}}{{/link-to}}</dd>
+    {{/each}}
+  </dl>
+</div>
+<div class="clear"></div>

@@ -1,0 +1,10 @@
+App.ConfigController = Ember.Controller.extend
+  language: "de"
+  interval: 10000
+  
+  # if you use brunch's local server, enter you uvr2web API path here.
+  # also make sure the API's debug flag is active and your local host
+  # is set correctly in include/init.inc.php
+  apiPath: "http://your-uvr2web-installation.com/api.php?"
+
+globalController "config"

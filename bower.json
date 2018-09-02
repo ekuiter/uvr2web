@@ -1,0 +1,11 @@
+{
+  "name": "uvr2web",
+  "version": "0.1",
+  "dependencies": {
+    "ember": "~1.5",
+    "ember-i18n": "~1.6",
+    "normalize.css": "~3.0",
+    "foundation": "~5.2"
+  },
+  "private": true
+}

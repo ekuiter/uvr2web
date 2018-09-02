@@ -1,0 +1,11 @@
+<h2>{{t "sensors"}}</h2>
+<ul class="large-block-grid-4 medium-block-grid-3 small-block-grid-2">
+  {{#each}}
+    <li>
+      {{#link-to "device" id class="th"}}
+        <img src="{{api-call "device.thumbnail" "bound" id 160 80}}">
+        <p class="nomargin text-center">{{alias}}</p>
+      {{/link-to}}
+    </li>
+  {{/each}}
+</ul>

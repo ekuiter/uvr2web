@@ -1,0 +1,34 @@
+.error {
+  background-color: #fdd;
+  padding: 5px 20px;
+  border-radius: 5px;
+}
+
+.margin {
+  margin: 15px;
+}
+
+.nomargin {
+  margin: 0;
+}
+
+.favorites {
+  margin: 10px 0 0 0;
+}
+
+.sub-nav {
+  margin: 0;
+}
+
+.clear {
+  clear: both;
+}
+
+.display-none {
+  display: none;
+}
+
+input.small {
+  height: 2em;
+  margin: 1px;
+}
